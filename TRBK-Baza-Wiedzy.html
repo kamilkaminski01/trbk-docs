@@ -174,6 +174,11 @@ button { font-family: inherit; cursor: pointer; }
   display: flex; flex-direction: column;
   position: sticky; top: 0; height: 100vh;
   z-index: 60;
+  /* Stała warstwa kompozytowa — zapobiega migotaniu przy przewijaniu
+     (repaint wywoływany przez backdrop-filter w topbarze). */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 .sidebar__brand {
   display: flex; align-items: center; gap: 11px;
@@ -355,14 +360,27 @@ button { font-family: inherit; cursor: pointer; }
 .article :where(h2) { font-size: 22px; margin: 38px 0 14px; padding-top: 6px; scroll-margin-top: 84px; }
 .article :where(h3) { font-size: 17px; margin: 26px 0 10px; scroll-margin-top: 84px; color: var(--text); }
 .article p { margin: 0 0 15px; }
-.article a.inline { color: var(--text); text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px; text-decoration-thickness: 1.5px; transition: text-decoration-color .15s; }
-.article a.inline:hover { text-decoration-color: var(--accent); }
+.article a.inline,
+.article p a, .article li a, .block-lead a, .kv__v a, .step__body a,
+.acc-panel a, .tab-panel a, .table-wrap a {
+  color: var(--text); font-weight: 500;
+  text-decoration: underline; text-decoration-color: var(--text-3);
+  text-underline-offset: 2px; text-decoration-thickness: 1.5px;
+  transition: text-decoration-color .15s, color .15s;
+}
+.article a.inline:hover,
+.article p a:hover, .article li a:hover, .block-lead a:hover, .kv__v a:hover, .step__body a:hover,
+.acc-panel a:hover, .tab-panel a:hover, .table-wrap a:hover {
+  color: var(--accent); text-decoration-color: var(--accent); text-decoration-thickness: 2px;
+}
 .article strong { font-weight: 650; }
 .article ul, .article ol { margin: 0 0 16px; padding-left: 22px; }
 .article li { margin: 5px 0; }
 .article li::marker { color: var(--text-3); }
-.heading-anchor { color: var(--text-3); opacity: 0; margin-left: 8px; font-weight: 400; transition: opacity .14s; text-decoration: none; }
-.article h2:hover .heading-anchor, .article h3:hover .heading-anchor { opacity: 1; }
+.heading-anchor { display: inline-flex; align-items: center; justify-content: center; vertical-align: middle; background: none; border: none; padding: 2px; margin-left: 6px; border-radius: 5px; color: var(--text-3); opacity: 0; cursor: pointer; text-decoration: none; transition: opacity .14s, color .14s, background .14s; }
+.article h2:hover .heading-anchor, .article h3:hover .heading-anchor, .heading-anchor:focus-visible { opacity: 1; }
+.heading-anchor:hover { color: var(--text); background: var(--hover); }
+@media (hover: none) { .heading-anchor { opacity: .45; } }
 
 code:not(pre code) {
   font-family: var(--font-mono); font-size: .87em;
@@ -424,7 +442,7 @@ code:not(pre code) {
 .note__title { font-weight: 650; font-size: 14px; margin-bottom: 3px; color: inherit; }
 .note__body { font-size: 14px; line-height: 1.58; }
 .note__body :last-child { margin-bottom: 0; }
-.note__body a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.note__body a { color: inherit; font-weight: 600; text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 2px; text-decoration-thickness: 1.5px; }
 .note--tip { border-color: var(--tip-bd); background: var(--tip-bg); color: var(--tip-fg); } .note--tip .note__ic { color: var(--tip-ic); }
 .note--warn { border-color: var(--warn-bd); background: var(--warn-bg); color: var(--warn-fg); } .note--warn .note__ic { color: var(--warn-ic); }
 .note--danger { border-color: var(--danger-bd); background: var(--danger-bg); color: var(--danger-fg); } .note--danger .note__ic { color: var(--danger-ic); }
@@ -477,10 +495,10 @@ table.tbl tbody tr:hover { background: var(--hover); }
   transition: border-color .15s, box-shadow .15s, transform .15s;
 }
 .card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
-.card__top { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
-.card__ic { width: 32px; height: 32px; border-radius: 8px; background: var(--surface-2); color: var(--text-2); display: grid; place-items: center; flex-shrink: 0; }
-.card__title { font-weight: 650; font-size: 14.5px; }
-.card__tag { margin-left: auto; font-size: 10.5px; font-weight: 600; color: var(--text-3); background: var(--surface); padding: 2px 8px; border-radius: 99px; border: 1px solid var(--border); }
+.card__top { display: grid; grid-template-columns: auto 1fr; column-gap: 11px; row-gap: 7px; margin-bottom: 10px; }
+.card__ic { grid-column: 1; grid-row: 1; width: 32px; height: 32px; border-radius: 8px; background: var(--surface-2); color: var(--text-2); display: grid; place-items: center; flex-shrink: 0; }
+.card__title { grid-column: 2; grid-row: 1; align-self: center; font-weight: 650; font-size: 14.5px; line-height: 1.3; }
+.card__tag { grid-column: 2; grid-row: 2; justify-self: start; font-size: 10.5px; font-weight: 600; color: var(--text-2); background: var(--surface); padding: 3px 9px; border-radius: 7px; border: 1px solid var(--border); line-height: 1.35; }
 .card__body { font-size: 13.3px; color: var(--text-2); line-height: 1.55; }
 .card__body a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
 
@@ -732,6 +750,21 @@ table.tbl tbody tr:hover { background: var(--hover); }
   display: grid; place-items: center;
 }
 
+/* Toast (np. „Link skopiowany”) */
+.toast {
+  position: fixed; left: 50%; bottom: 28px;
+  transform: translateX(-50%) translateY(10px);
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: var(--on-accent);
+  padding: 10px 16px; border-radius: 10px;
+  font-size: 13.5px; font-weight: 600;
+  box-shadow: var(--shadow-lg); z-index: 200;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .2s var(--ease), transform .2s var(--ease), visibility .2s;
+}
+.toast.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+@media print { .toast { display: none !important; } }
+
   </style>
 </head>
 <body>
@@ -798,8 +831,8 @@ window.KB_CONTENT = (function () {
       { t: "h", text: "Jak wygląda współpraca — od inwestycji do sprzedaży" },
       { t: "steps", items: [
         { title: "Nowa inwestycja", html: "Flipper przekazuje Ci adres i zakres nowej inwestycji oraz oczekiwany standard wykończenia i termin." },
-        { title: "Rekrutacja ekipy", html: "Wystawiasz ogłoszenia, umawiasz spotkania na miejscu, wybieracie ekipę i podpisujecie umowę (wzór dostarcza flipper)." },
-        { title: "Uruchomienie prac", html: "Organizujesz start: dostęp do lokalu, prąd budowlany (rynek pierwotny), pierwsze materiały i harmonogram." },
+        { title: "Rekrutacja ekipy", html: "Wystawiasz ogłoszenia, umawiasz spotkania na miejscu, wybieracie ekipę i podpisujecie umowę." },
+        { title: "Uruchomienie prac", html: "Organizujesz start: dostęp do lokalu, pierwsze materiały i harmonogram." },
         { title: "Nadzór i kontakt", html: "Odwiedzasz inwestycję min. 2× w tygodniu, jesteś w bieżącym kontakcie z ekipą, rozwiązujesz problemy." },
         { title: "Materiały i dostawy", html: "Na bieżąco zamawiasz materiały według list od ekipy i pilnujesz terminów dostaw." },
         { title: "Raportowanie", html: "Po każdej wizycie dodajesz raport ze zdjęciami do Nozbe (i informujesz flippera)." },
@@ -879,7 +912,7 @@ window.KB_CONTENT = (function () {
         { k: "Typ ekip", v: "Kompleksowe (wykończenie + elektryka + hydraulika)." },
         { k: "Umowy", v: "Zawsze na wzorze dostarczonym przez flippera." },
         { k: "Płatności za materiały", v: "Realizuje flipper (Ty kompletujesz i przekazujesz do opłacenia)." },
-        { k: "Wykończenie i projekt", v: "Decyduje flipper (panele, płytki, kolory, armatura); pytania techniczne ekip → architekt." },
+        { k: "Wykończenie i projekt", v: "Decyduje flipper (panele, płytki, kolory, armatura)." },
         { k: "Wsparcie logistyczne", v: "Pomocnik z busem (wywóz odpadów, transport, zwroty pozostałości)." },
         { k: "Eskalacja", v: "Brak wiedzy / decyzja poza zakresem → konsultacja z flipperem." }
       ] },
@@ -996,20 +1029,20 @@ window.KB_CONTENT = (function () {
       { t: "tabs", items: [
         { label: "Wzór wiadomości (rynek pierwotny)", blocks: [
           { t: "p", html: "<em>Sprawdzony wzór do skopiowania — uzupełnij dane w nawiasach:</em>" },
-          { t: "note", variant: "info", html: "Poszukuję zespołu wykonawców, którzy wykonają remont mieszkania w stanie deweloperskim <strong>[metraż] m²</strong> na <strong>[parter / piętro]</strong> (rynek pierwotny) w <strong>[miasto]</strong>. Zakres prac to <strong>prosty standard</strong>, bez zmian układu, bez przeróbek kuchni ani łazienki. Mam gotowy projekt i rysunki, zapewniam materiały. Szukam <strong>ekipy kompleksowej</strong> (wykończenie + elektryka + hydraulika).<br>Możliwy start w <strong>[miesiąc]</strong>. Proszę o odpowiedź zwrotną, czy taki termin odpowiada, a jeśli tak — jak to wygląda cenowo. Proszę też o <strong>przykładowe realizacje</strong> oraz <strong>numer telefonu</strong>. Pozdrawiam." }
+          { t: "note", variant: "info", html: "Poszukuję zespołu wykonawców, którzy wykonają remont mieszkania w stanie deweloperskim <strong>[metraż] m²</strong> na <strong>[parter / piętro]</strong> (rynek pierwotny) w <strong>[miasto]</strong>. Zakres prac to <strong>prosty standard</strong>, bez zmian układu, bez przeróbek kuchni ani łazienki. Mam gotowy projekt i rysunki, zapewniam materiały. Szukam <strong>ekipy kompleksowej</strong> (wykończenie + elektryka + hydraulika).<br>Możliwy start w <strong>[miesiąc]</strong>. Proszę o odpowiedź zwrotną, czy taki termin odpowiada, a jeśli tak — jak to wygląda cenowo. Pozdrawiam." }
         ] },
         { label: "Wariant: Facebook / Spotted", blocks: [
-          { t: "note", variant: "info", html: "Poszukuję <strong>kompleksowej ekipy remontowej</strong> do wykończenia mieszkania (<strong>[dzielnica, miasto]</strong>).<br>Zakres: pełne wykończenie pod klucz — w tym elektryka i hydraulika. Mam gotowy projekt i zapewniam materiały.<br>Start: <strong>[termin]</strong>.<br>Proszę o przesłanie <strong>realizacji (zdjęcia)</strong> oraz <strong>numeru telefonu</strong> w wiadomości. Odezwę się do wybranych ekip i umówię spotkanie na miejscu. Z góry dziękuję!" }
+          { t: "note", variant: "info", html: "Poszukuję <strong>kompleksowej ekipy remontowej</strong> do wykończenia mieszkania <strong>[metraż] m²</strong> (<strong>[dzielnica, miasto]</strong>).<br>Zakres: pełne wykończenie pod klucz — w tym elektryka i hydraulika. Mam gotowy projekt i zapewniam materiały.<br>Start: <strong>[termin]</strong>.<br>Proszę o przesyłanie <strong>numeru telefonu</strong> w wiadomości prywatnej lub w komentarzu. Z góry dziękuję!" }
         ] },
         { label: "Wariant: Fixly", blocks: [
-          { t: "note", variant: "info", html: "Kompleksowe wykończenie mieszkania <strong>[metraż] m²</strong>, <strong>[dzielnica, miasto]</strong>. Zakres: wykończenie + elektryka + hydraulika, prosty standard. Mam gotowy projekt i materiały. Start: <strong>[termin]</strong>. Proszę o wycenę oraz przykładowe realizacje. Spotkanie i szczegóły na inwestycji." }
+          { t: "note", variant: "info", html: "Kompleksowe wykończenie mieszkania <strong>[metraż] m²</strong>, <strong>[dzielnica, miasto]</strong>. Zakres: wykończenie + elektryka + hydraulika, prosty standard. Mam gotowy projekt i materiały. Start: <strong>[termin]</strong>. Proszę o wycenę oraz przewidywany czas realizacji. Spotkanie i szczegóły na inwestycji." }
         ] }
       ] },
 
       { t: "h", text: "Proces rekrutacji krok po kroku" },
       { t: "steps", items: [
         { title: "Publikujesz ogłoszenie", html: "Na OLX / Fixly / Facebooku, z kompletem informacji jak wyżej." },
-        { title: "Zbierasz zgłoszenia", html: "Notujesz kontakty, przeglądasz realizacje, robisz wstępną selekcję." },
+        { title: "Zbierasz zgłoszenia", html: "Notujesz kontakty, robisz wstępną selekcję." },
         { title: "Umawiasz spotkanie na inwestycji", html: "Z wybranymi ekipami — najlepiej bezpośrednio w remontowanym lokalu." },
         { title: "Omawiasz szczegóły", html: "Zakres prac, standard wykończenia, termin realizacji oraz wycenę." },
         { title: "Wybieracie ekipę", html: "Rekomendujesz flipperowi; po akceptacji warunków przechodzicie do umowy." },
@@ -1071,8 +1104,8 @@ window.KB_CONTENT = (function () {
           { t: "p", html: "Większość materiałów budowlanych i wyposażenia, a także panele." },
           { t: "steps", items: [
             { title: "Przygotuj listę materiałów", html: "Skompletuj potrzebne pozycje." },
-            { title: "Wyślij mailowo do Magdy", html: "Dołącz <strong>adres dostawy</strong> oraz <strong>termin dostawy</strong>." },
-            { title: "Magda przygotowuje zamówienie", html: "Po stronie Leroy Merlin." },
+            { title: "Wyślij mailowo do opiekuna", html: "Dołącz <strong>adres dostawy</strong> oraz <strong>termin dostawy</strong>." },
+            { title: "Opiekun przygotowuje zamówienie", html: "Po stronie Leroy Merlin." },
             { title: "Zamówienie trafia do flippera", html: "Do akceptacji i opłacenia." },
             { title: "Flipper opłaca zamówienie", html: "Po opłaceniu realizowana jest dostawa." }
           ] }
@@ -1124,7 +1157,7 @@ window.KB_CONTENT = (function () {
 
       { t: "h", text: "Skrót: dostawca → metoda → kto płaci" },
       { t: "table", head: ["Dostawca", "Co zamawiamy", "Jak składamy", "Płatność"], rows: [
-        ["Leroy Merlin", "Materiały, wyposażenie, panele", "Mailowo do Magdy (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
+        ["Leroy Merlin", "Materiały, wyposażenie, panele", "Mailowo do opiekuna (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
         ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],
         ["Nexterio", "Płytki", "Koszyk na stronie, przelew tradycyjny", "Screenshot → flipper opłaca"],
         ["Mexen", "Armatura", "Platforma B2B, przelew tradycyjny", "Screenshot → flipper opłaca"],
@@ -1149,7 +1182,7 @@ window.KB_CONTENT = (function () {
   A.nadzor = {
     id: "nadzor-nad-remontem",
     title: "Nadzór nad remontem",
-    summary: "Wizyty min. 2× w tygodniu, kontakt z ekipą i raport po każdej wizycie — co dokładnie ma zawierać.",
+    summary: "Oględziny remontów, kontakt z ekipami i raporty po każdej wizycie — co dokładnie ma zawierać.",
     tags: ["nadzór", "raport", "wizyta", "kontrola", "harmonogram", "zdjęcia", "nozbe", "architekt"],
     updated: "2026-06-21",
     blocks: [
@@ -1207,7 +1240,7 @@ window.KB_CONTENT = (function () {
   A.terminy = {
     id: "terminy-i-dostawy",
     title: "Organizacja terminów i dostaw",
-    summary: "Kogo i kiedy umawiamy: stolarze, sprzątanie, homestaging, fotograf, kontenery, hydraulik, elektryk, pomocnik z busem — oraz logistyka dostaw.",
+    summary: "Kogo i kiedy umawiamy: stolarze, sprzątanie, homestaging, fotograf, kontenery, hydraulik, elektryk, pomocnik — oraz logistyka dostaw.",
     tags: ["terminy", "harmonogram", "stolarz", "fotograf", "sprzątanie", "homestaging", "kontener", "pomocnik", "bus", "dostawy", "logistyka"],
     updated: "2026-06-21",
     blocks: [
@@ -1220,8 +1253,8 @@ window.KB_CONTENT = (function () {
         { icon: "image", title: "Fotograf", html: "Zdjęcia gotowego mieszkania do oferty sprzedażowej." },
         { icon: "clipboard", title: "Sprzątaczki", html: "Sprzątanie poremontowe przed sesją i przekazaniem." },
         { icon: "truck", title: "Kontener na odpady", html: "Podstawienie i odbiór gruzu/odpadów w odpowiednim momencie." },
-        { icon: "bolt", title: "Elektryk (wyjątkowo)", html: "Np. wykonanie WLZ na rynku wtórnym." },
-        { icon: "tools", title: "Hydraulik (wyjątkowo)", html: "Np. przeniesienie wodomierzy." },
+        { icon: "bolt", title: "Elektryk", html: "Np. wykonanie WLZ na rynku wtórnym." },
+        { icon: "tools", title: "Hydraulik", html: "Np. przeniesienie wodomierzy, wymiana grzejników, przeróbki pionów." },
         { icon: "image", title: "Homestaging", html: "Aranżacja i dekoracja wnętrza przed sesją zdjęciową — lepsza prezentacja oferty." },
         { icon: "truck", title: "Pomocnik z busem", html: "Transport większych rzeczy: wywóz odpadów, dostawy, zwroty pozostałości." }
       ] },
@@ -1280,7 +1313,7 @@ window.KB_CONTENT = (function () {
     tags: ["odbiór", "odbiór prac", "usterki", "poprawki", "jakość", "kontrola"],
     updated: "2026-06-21",
     blocks: [
-      { t: "lead", html: "Odbiór wykończonego lokalu to moment, w którym sprawdzasz, czy prace zostały wykonane zgodnie z projektem i standardem, oraz spisujesz usterki do poprawy. To Twój odbiór prac od ekipy — nie mylić z odbiorem mieszkania od dewelopera, którego koordynator nie prowadzi." },
+      { t: "lead", html: "Odbiór wykończonego lokalu to moment, w którym sprawdzasz, czy prace zostały wykonane zgodnie z projektem i standardem, oraz spisujesz usterki do poprawy. To Twój odbiór prac od ekipy — nie mylić z odbiorem mieszkania od dewelopera." },
       { t: "note", variant: "info", title: "Kiedy robimy odbiór", html: "Gdy ekipa zgłasza zakończenie prac (lub etapu). Najlepiej z udziałem ekipy — od razu wskazujesz, co wymaga poprawy." },
 
       { t: "h", text: "Cel odbioru" },
@@ -1335,7 +1368,7 @@ window.KB_CONTENT = (function () {
   A.pierwotny = {
     id: "rynek-pierwotny",
     title: "Rynek pierwotny",
-    summary: "Mieszkania od deweloperów — większość naszych inwestycji. Prąd budowlany i organizacja startu prac w nowej inwestycji.",
+    summary: "Mieszkania od deweloperów — większość naszych inwestycji. Organizacja startu prac w nowej inwestycji.",
     tags: ["rynek pierwotny", "deweloper", "prąd budowlany", "nowa inwestycja", "start"],
     updated: "2026-06-21",
     blocks: [
@@ -1404,7 +1437,7 @@ window.KB_CONTENT = (function () {
       { t: "h", text: "Wymiana grzejników" },
       { t: "ul", items: [
         "Stare grzejniki często wymieniamy na nowe — ustal zakres i model ze standardem wykończenia.",
-        "Sprawdź sposób zasilania (instalacja c.o.) i ewentualne formalności przy ingerencji w piony.",
+        "Sprawdź ewentualne wymagania przy ingerencji w piony.",
         "Prace na pionach grzewczych mogą wymagać zgody/uzgodnienia ze spółdzielnią lub wspólnotą."
       ] },
 
@@ -1446,29 +1479,31 @@ window.KB_CONTENT = (function () {
     id: "dostawcy",
     title: "Dostawcy i miejsca zakupów",
     summary: "Skąd najczęściej zamawiamy materiały i wyposażenie — katalog dostawców z zakresem i kanałem zamawiania.",
-    tags: ["dostawcy", "leroy merlin", "mexen", "nexterio", "benmar", "allegro", "led-lux", "stolarze", "szklarze", "armatura", "płytki", "panele", "oświetlenie", "sztukateria"],
+    tags: ["dostawcy", "leroy merlin", "mexen", "nexterio", "benmar", "allegro", "led-lux", "media expert", "agd", "stolarze", "szklarze", "armatura", "płytki", "panele", "oświetlenie", "sztukateria"],
     updated: "2026-06-21",
     blocks: [
       { t: "lead", html: "To Twój podręczny katalog dostawców. Większość zamówień składasz w kilku stałych miejscach — dzięki temu wiesz, gdzie po co sięgnąć." },
 
       { t: "cards", items: [
-        { icon: "store", title: "Leroy Merlin", tag: "Materiały / panele", html: "Większość materiałów budowlanych i wyposażenia oraz panele. Zamówienia mailowo przez Magdę." },
+        { icon: "store", title: "Leroy Merlin", tag: "Materiały / panele", html: "Większość materiałów budowlanych i wyposażenia oraz panele. Zamówienia mailowo przez opiekuna." },
         { icon: "tools", title: "Mexen", tag: "Armatura", html: "Armatura łazienkowa i kuchenna. Zamawiamy przez platformę <strong>B2B</strong>, przelew tradycyjny." },
         { icon: "store", title: "Nexterio", tag: "Płytki", html: "Płytki. Zamówienie kompletujesz na stronie, płatność przelewem tradycyjnym." },
         { icon: "truck", title: "Benmar", tag: "Materiały + dostawa", html: "Materiały budowlane wraz z organizacją dostawy na inwestycję." },
-        { icon: "hardhat", title: "Stolarze", tag: "Kuchnie / zabudowy", html: "Kuchnie oraz zabudowy stałe wykonywane na wymiar." },
+        { icon: "hardhat", title: "Stolarze", tag: "Kuchnie / zabudowy", html: "Kuchnie oraz zabudowy stałe na wymiar. Montują też AGD przy zabudowie." },
         { icon: "image", title: "Szklarze", tag: "Lustra", html: "Lustra łazienkowe wykonywane na wymiar." },
         { icon: "store", title: "Allegro", tag: "Sztukateria / lustra / oświetlenie", html: "Sztukateria, listwy, gotowe lustra, oświetlenie i drobne wyposażenie." },
-        { icon: "bolt", title: "Led-Lux", tag: "Oświetlenie", html: "Wyspecjalizowany dostawca oświetlenia." }
+        { icon: "bolt", title: "Led-Lux", tag: "Oświetlenie", html: "Wyspecjalizowany dostawca oświetlenia." },
+        { icon: "store", title: "Media Expert", tag: "AGD", html: "Sprzęt AGD do mieszkań. Montaż AGD najczęściej wykonują stolarze przy zabudowie." }
       ] },
 
       { t: "h", text: "Katalog — co, gdzie i jak" },
       { t: "table", head: ["Dostawca", "Co zamawiamy", "Kanał", "Płatność"], rows: [
-        ["Leroy Merlin", "Materiały budowlane, wyposażenie, panele", "Mail do Magdy (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
+        ["Leroy Merlin", "Materiały budowlane, wyposażenie, panele", "Mail do opiekuna (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
         ["Mexen", "Armatura", "Platforma B2B", "Przelew tradycyjny — screenshot do flippera"],
         ["Nexterio", "Płytki", "Strona internetowa", "Przelew tradycyjny — screenshot do flippera"],
         ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Strona Allegro", "Przelew tradycyjny — screenshot do flippera"],
         ["Led-Lux", "Oświetlenie", "Zamówienie u dostawcy", "Przelew tradycyjny — screenshot do flippera"],
+        ["Media Expert", "AGD (montaż: stolarze)", "Zamówienie u dostawcy", "Wg ustaleń z flipperem"],
         ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],
         ["Stolarze", "Kuchnie, zabudowy stałe", "Pomiar + zamówienie indywidualne", "Wg ustaleń z flipperem"],
         ["Szklarze", "Lustra łazienkowe na wymiar", "Pomiar + zamówienie indywidualne", "Wg ustaleń z flipperem"]
@@ -1476,7 +1511,7 @@ window.KB_CONTENT = (function () {
       { t: "note", variant: "info", title: "Procedury zamówień", html: "Dokładne kroki dla Leroy Merlin, Benmar, Nexterio, Mexen, Allegro i Led-Lux znajdziesz w artykule <a href='#/koordynator-remontow/zamawianie-materialow'>Zamawianie materiałów</a>." },
 
       { t: "h", text: "Kontakty" },
-      { t: "p", html: "Dane kontaktowe i dostępy do dostawców (osoby, telefony, loginy B2B — np. kontakt do Magdy w Leroy Merlin czy konto B2B Mexen) <strong>uzyskasz od flippera</strong>. Jeśli czegoś brakuje — poproś o kontakt przed złożeniem zamówienia." },
+      { t: "p", html: "Dane kontaktowe i dostępy do dostawców (osoby, telefony, loginy B2B — np. kontakt do opiekuna w Leroy Merlin czy konto B2B Mexen) <strong>uzyskasz od flippera</strong>. Jeśli czegoś brakuje — poproś o kontakt przed złożeniem zamówienia." },
       { t: "note", variant: "tip", html: "Gdy znajdziesz nowego, dobrego dostawcę (np. lepsza cena lub krótszy termin) — zaproponuj go flipperowi i dopisz do tego katalogu." }
     ]
   };
@@ -1536,7 +1571,7 @@ window.KB_CONTENT = (function () {
         "Zainstalowany WhatsApp + dodane kontakty zespołu i ekip.",
         "Dostęp do Arkuszy Google z budżetami remontów.",
         "Znajomość struktury folderów na Dysku.",
-        "Dostęp do platformy B2B Mexen i kontaktu w Leroy Merlin (Magda)."
+        "Dostęp do platformy B2B Mexen i kontaktu w Leroy Merlin."
       ] }
     ]
   };
@@ -1578,7 +1613,7 @@ window.KB_CONTENT = (function () {
     tags: ["checklisty", "listy kontrolne", "procedury", "start", "odbiór", "zakończenie"],
     updated: "2026-06-21",
     blocks: [
-      { t: "lead", html: "Zebrane w jednym miejscu listy kontrolne. Zaznaczenia zapisują się w Twojej przeglądarce, więc możesz wracać do nich w trakcie pracy. Listę możesz też wydrukować (przycisk „Drukuj / PDF” u góry)." },
+      { t: "lead", html: "Zebrane w jednym miejscu listy kontrolne. Odhaczaj punkty na bieżąco podczas pracy — zaznaczenia nie są zapisywane (służą do bieżącej kontroli). Listę możesz też wydrukować (przycisk „Drukuj / PDF” u góry)." },
 
       { t: "h", text: "Start nowej inwestycji" },
       { t: "check", title: "Uruchomienie inwestycji", id: "cl-start", items: [
@@ -1746,6 +1781,7 @@ window.KB_CONTENT = (function () {
     printer: function (o) { return svg('<path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/>', o); },
     download: function (o) { return svg('<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>', o); },
     hash: function (o) { return svg('<path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/>', o); },
+    share: function (o) { return svg('<circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7 15.7 6.3M8.3 13.3l7.4 4.4"/>', o); },
     info: function (o) { return svg('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>', o); },
     bulb: function (o) { return svg('<path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/>', o); },
     warn: function (o) { return svg('<path d="M10.3 3.6 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.6a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/>', o); },
@@ -1864,7 +1900,7 @@ window.KB_CONTENT = (function () {
         var id = b.id || (slugify(b.text) + "-" + (++hCounter));
         b._id = id;
         return "<h" + lvl + ' id="' + id + '">' + escapeHtml(b.text) +
-          '<a class="heading-anchor" href="#' + (location.hash.split("#")[1] || "") + "#" + id + '" aria-label="Link do sekcji" data-anchor="' + id + '">' + I.hash({ size: 15 }) + "</a></h" + lvl + ">";
+          '<button type="button" class="heading-anchor" aria-label="Kopiuj link do tej sekcji" data-anchor="' + id + '">' + I.share({ size: 15 }) + "</button></h" + lvl + ">";
       }
       case "ul": return "<ul>" + (b.items || []).map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul>";
       case "ol": return "<ol>" + (b.items || []).map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ol>";
@@ -2143,25 +2179,41 @@ window.KB_CONTENT = (function () {
   }
 
   /* ----- Interakcje w artykule (checklisty, accordiony, taby) ----------- */
+  /* ----- Kopiowanie do schowka + toast -------------------------------- */
+  function copyText(t) {
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
+    return new Promise(function (res, rej) {
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = t; ta.setAttribute("readonly", "");
+        ta.style.position = "fixed"; ta.style.top = "-1000px"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        ok ? res() : rej();
+      } catch (e) { rej(e); }
+    });
+  }
+  var toastTimer = null;
+  function showToast(msg) {
+    var t = document.getElementById("trbk-toast");
+    if (!t) { t = document.createElement("div"); t.id = "trbk-toast"; t.className = "toast"; document.body.appendChild(t); }
+    t.innerHTML = I.check({ size: 15, sw: 2.4 }) + "<span>" + escapeHtml(msg) + "</span>";
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2000);
+  }
+
   function wireArticleInteractions(roleId, artId) {
-    // Checklisty + zapamiętywanie stanu
+    // Checklisty — zaznaczenia NIE są zapisywane (bieżąca kontrola w trakcie pracy).
     $all(".checklist").forEach(function (list) {
-      var key = "trbk-check:" + roleId + ":" + artId + ":" + list.getAttribute("data-checklist");
-      var saved = {};
-      try { saved = JSON.parse(LS.get(key) || "{}"); } catch (e) {}
       var boxes = $all('input[type="checkbox"]', list);
       var prog = $("[data-progress]", list);
       function refresh() {
         var done = boxes.filter(function (b) { return b.checked; }).length;
         if (prog) prog.textContent = done + "/" + boxes.length;
       }
-      boxes.forEach(function (box) {
-        var i = box.getAttribute("data-ci");
-        if (saved[i]) box.checked = true;
-        box.addEventListener("change", function () {
-          saved[i] = box.checked; LS.set(key, JSON.stringify(saved)); refresh();
-        });
-      });
+      boxes.forEach(function (box) { box.addEventListener("change", refresh); });
       refresh();
     });
 
@@ -2199,13 +2251,13 @@ window.KB_CONTENT = (function () {
     var printBtn = $("[data-print]");
     if (printBtn) printBtn.addEventListener("click", function () { window.print(); });
 
-    // Kotwice nagłówków
+    // Nagłówki: przycisk udostępniania — kopiuje link do artykułu + toast.
     $all("[data-anchor]").forEach(function (anchor) {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        var id = anchor.getAttribute("data-anchor");
-        var el = document.getElementById(id);
-        if (el) { el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+        var url = location.href.split("#")[0] + "#/" + roleId + "/" + artId;
+        copyText(url).then(function () { showToast("Link skopiowany"); })
+                     .catch(function () { showToast("Nie udało się skopiować"); });
       });
     });
   }

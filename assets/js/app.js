@@ -34,6 +34,7 @@
     printer: function (o) { return svg('<path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/>', o); },
     download: function (o) { return svg('<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>', o); },
     hash: function (o) { return svg('<path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/>', o); },
+    share: function (o) { return svg('<circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7 15.7 6.3M8.3 13.3l7.4 4.4"/>', o); },
     info: function (o) { return svg('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>', o); },
     bulb: function (o) { return svg('<path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/>', o); },
     warn: function (o) { return svg('<path d="M10.3 3.6 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.6a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/>', o); },
@@ -152,7 +153,7 @@
         var id = b.id || (slugify(b.text) + "-" + (++hCounter));
         b._id = id;
         return "<h" + lvl + ' id="' + id + '">' + escapeHtml(b.text) +
-          '<a class="heading-anchor" href="#' + (location.hash.split("#")[1] || "") + "#" + id + '" aria-label="Link do sekcji" data-anchor="' + id + '">' + I.hash({ size: 15 }) + "</a></h" + lvl + ">";
+          '<button type="button" class="heading-anchor" aria-label="Kopiuj link do tej sekcji" data-anchor="' + id + '">' + I.share({ size: 15 }) + "</button></h" + lvl + ">";
       }
       case "ul": return "<ul>" + (b.items || []).map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul>";
       case "ol": return "<ol>" + (b.items || []).map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ol>";
@@ -431,25 +432,41 @@
   }
 
   /* ----- Interakcje w artykule (checklisty, accordiony, taby) ----------- */
+  /* ----- Kopiowanie do schowka + toast -------------------------------- */
+  function copyText(t) {
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
+    return new Promise(function (res, rej) {
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = t; ta.setAttribute("readonly", "");
+        ta.style.position = "fixed"; ta.style.top = "-1000px"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        ok ? res() : rej();
+      } catch (e) { rej(e); }
+    });
+  }
+  var toastTimer = null;
+  function showToast(msg) {
+    var t = document.getElementById("trbk-toast");
+    if (!t) { t = document.createElement("div"); t.id = "trbk-toast"; t.className = "toast"; document.body.appendChild(t); }
+    t.innerHTML = I.check({ size: 15, sw: 2.4 }) + "<span>" + escapeHtml(msg) + "</span>";
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2000);
+  }
+
   function wireArticleInteractions(roleId, artId) {
-    // Checklisty + zapamiętywanie stanu
+    // Checklisty — zaznaczenia NIE są zapisywane (bieżąca kontrola w trakcie pracy).
     $all(".checklist").forEach(function (list) {
-      var key = "trbk-check:" + roleId + ":" + artId + ":" + list.getAttribute("data-checklist");
-      var saved = {};
-      try { saved = JSON.parse(LS.get(key) || "{}"); } catch (e) {}
       var boxes = $all('input[type="checkbox"]', list);
       var prog = $("[data-progress]", list);
       function refresh() {
         var done = boxes.filter(function (b) { return b.checked; }).length;
         if (prog) prog.textContent = done + "/" + boxes.length;
       }
-      boxes.forEach(function (box) {
-        var i = box.getAttribute("data-ci");
-        if (saved[i]) box.checked = true;
-        box.addEventListener("change", function () {
-          saved[i] = box.checked; LS.set(key, JSON.stringify(saved)); refresh();
-        });
-      });
+      boxes.forEach(function (box) { box.addEventListener("change", refresh); });
       refresh();
     });
 
@@ -487,13 +504,13 @@
     var printBtn = $("[data-print]");
     if (printBtn) printBtn.addEventListener("click", function () { window.print(); });
 
-    // Kotwice nagłówków
+    // Nagłówki: przycisk udostępniania — kopiuje link do artykułu + toast.
     $all("[data-anchor]").forEach(function (anchor) {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        var id = anchor.getAttribute("data-anchor");
-        var el = document.getElementById(id);
-        if (el) { el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+        var url = location.href.split("#")[0] + "#/" + roleId + "/" + artId;
+        copyText(url).then(function () { showToast("Link skopiowany"); })
+                     .catch(function () { showToast("Nie udało się skopiować"); });
       });
     });
   }

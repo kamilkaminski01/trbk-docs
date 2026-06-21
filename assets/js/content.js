@@ -47,8 +47,8 @@ window.KB_CONTENT = (function () {
       { t: "h", text: "Jak wygląda współpraca — od inwestycji do sprzedaży" },
       { t: "steps", items: [
         { title: "Nowa inwestycja", html: "Flipper przekazuje Ci adres i zakres nowej inwestycji oraz oczekiwany standard wykończenia i termin." },
-        { title: "Rekrutacja ekipy", html: "Wystawiasz ogłoszenia, umawiasz spotkania na miejscu, wybieracie ekipę i podpisujecie umowę (wzór dostarcza flipper)." },
-        { title: "Uruchomienie prac", html: "Organizujesz start: dostęp do lokalu, prąd budowlany (rynek pierwotny), pierwsze materiały i harmonogram." },
+        { title: "Rekrutacja ekipy", html: "Wystawiasz ogłoszenia, umawiasz spotkania na miejscu, wybieracie ekipę i podpisujecie umowę." },
+        { title: "Uruchomienie prac", html: "Organizujesz start: dostęp do lokalu, pierwsze materiały i harmonogram." },
         { title: "Nadzór i kontakt", html: "Odwiedzasz inwestycję min. 2× w tygodniu, jesteś w bieżącym kontakcie z ekipą, rozwiązujesz problemy." },
         { title: "Materiały i dostawy", html: "Na bieżąco zamawiasz materiały według list od ekipy i pilnujesz terminów dostaw." },
         { title: "Raportowanie", html: "Po każdej wizycie dodajesz raport ze zdjęciami do Nozbe (i informujesz flippera)." },
@@ -128,7 +128,7 @@ window.KB_CONTENT = (function () {
         { k: "Typ ekip", v: "Kompleksowe (wykończenie + elektryka + hydraulika)." },
         { k: "Umowy", v: "Zawsze na wzorze dostarczonym przez flippera." },
         { k: "Płatności za materiały", v: "Realizuje flipper (Ty kompletujesz i przekazujesz do opłacenia)." },
-        { k: "Wykończenie i projekt", v: "Decyduje flipper (panele, płytki, kolory, armatura); pytania techniczne ekip → architekt." },
+        { k: "Wykończenie i projekt", v: "Decyduje flipper (panele, płytki, kolory, armatura)." },
         { k: "Wsparcie logistyczne", v: "Pomocnik z busem (wywóz odpadów, transport, zwroty pozostałości)." },
         { k: "Eskalacja", v: "Brak wiedzy / decyzja poza zakresem → konsultacja z flipperem." }
       ] },
@@ -245,20 +245,20 @@ window.KB_CONTENT = (function () {
       { t: "tabs", items: [
         { label: "Wzór wiadomości (rynek pierwotny)", blocks: [
           { t: "p", html: "<em>Sprawdzony wzór do skopiowania — uzupełnij dane w nawiasach:</em>" },
-          { t: "note", variant: "info", html: "Poszukuję zespołu wykonawców, którzy wykonają remont mieszkania w stanie deweloperskim <strong>[metraż] m²</strong> na <strong>[parter / piętro]</strong> (rynek pierwotny) w <strong>[miasto]</strong>. Zakres prac to <strong>prosty standard</strong>, bez zmian układu, bez przeróbek kuchni ani łazienki. Mam gotowy projekt i rysunki, zapewniam materiały. Szukam <strong>ekipy kompleksowej</strong> (wykończenie + elektryka + hydraulika).<br>Możliwy start w <strong>[miesiąc]</strong>. Proszę o odpowiedź zwrotną, czy taki termin odpowiada, a jeśli tak — jak to wygląda cenowo. Proszę też o <strong>przykładowe realizacje</strong> oraz <strong>numer telefonu</strong>. Pozdrawiam." }
+          { t: "note", variant: "info", html: "Poszukuję zespołu wykonawców, którzy wykonają remont mieszkania w stanie deweloperskim <strong>[metraż] m²</strong> na <strong>[parter / piętro]</strong> (rynek pierwotny) w <strong>[miasto]</strong>. Zakres prac to <strong>prosty standard</strong>, bez zmian układu, bez przeróbek kuchni ani łazienki. Mam gotowy projekt i rysunki, zapewniam materiały. Szukam <strong>ekipy kompleksowej</strong> (wykończenie + elektryka + hydraulika).<br>Możliwy start w <strong>[miesiąc]</strong>. Proszę o odpowiedź zwrotną, czy taki termin odpowiada, a jeśli tak — jak to wygląda cenowo. Pozdrawiam." }
         ] },
         { label: "Wariant: Facebook / Spotted", blocks: [
-          { t: "note", variant: "info", html: "Poszukuję <strong>kompleksowej ekipy remontowej</strong> do wykończenia mieszkania (<strong>[dzielnica, miasto]</strong>).<br>Zakres: pełne wykończenie pod klucz — w tym elektryka i hydraulika. Mam gotowy projekt i zapewniam materiały.<br>Start: <strong>[termin]</strong>.<br>Proszę o przesłanie <strong>realizacji (zdjęcia)</strong> oraz <strong>numeru telefonu</strong> w wiadomości. Odezwę się do wybranych ekip i umówię spotkanie na miejscu. Z góry dziękuję!" }
+          { t: "note", variant: "info", html: "Poszukuję <strong>kompleksowej ekipy remontowej</strong> do wykończenia mieszkania <strong>[metraż] m²</strong> (<strong>[dzielnica, miasto]</strong>).<br>Zakres: pełne wykończenie pod klucz — w tym elektryka i hydraulika. Mam gotowy projekt i zapewniam materiały.<br>Start: <strong>[termin]</strong>.<br>Proszę o przesyłanie <strong>numeru telefonu</strong> w wiadomości prywatnej lub w komentarzu. Z góry dziękuję!" }
         ] },
         { label: "Wariant: Fixly", blocks: [
-          { t: "note", variant: "info", html: "Kompleksowe wykończenie mieszkania <strong>[metraż] m²</strong>, <strong>[dzielnica, miasto]</strong>. Zakres: wykończenie + elektryka + hydraulika, prosty standard. Mam gotowy projekt i materiały. Start: <strong>[termin]</strong>. Proszę o wycenę oraz przykładowe realizacje. Spotkanie i szczegóły na inwestycji." }
+          { t: "note", variant: "info", html: "Kompleksowe wykończenie mieszkania <strong>[metraż] m²</strong>, <strong>[dzielnica, miasto]</strong>. Zakres: wykończenie + elektryka + hydraulika, prosty standard. Mam gotowy projekt i materiały. Start: <strong>[termin]</strong>. Proszę o wycenę oraz przewidywany czas realizacji. Spotkanie i szczegóły na inwestycji." }
         ] }
       ] },
 
       { t: "h", text: "Proces rekrutacji krok po kroku" },
       { t: "steps", items: [
         { title: "Publikujesz ogłoszenie", html: "Na OLX / Fixly / Facebooku, z kompletem informacji jak wyżej." },
-        { title: "Zbierasz zgłoszenia", html: "Notujesz kontakty, przeglądasz realizacje, robisz wstępną selekcję." },
+        { title: "Zbierasz zgłoszenia", html: "Notujesz kontakty, robisz wstępną selekcję." },
         { title: "Umawiasz spotkanie na inwestycji", html: "Z wybranymi ekipami — najlepiej bezpośrednio w remontowanym lokalu." },
         { title: "Omawiasz szczegóły", html: "Zakres prac, standard wykończenia, termin realizacji oraz wycenę." },
         { title: "Wybieracie ekipę", html: "Rekomendujesz flipperowi; po akceptacji warunków przechodzicie do umowy." },
@@ -320,8 +320,8 @@ window.KB_CONTENT = (function () {
           { t: "p", html: "Większość materiałów budowlanych i wyposażenia, a także panele." },
           { t: "steps", items: [
             { title: "Przygotuj listę materiałów", html: "Skompletuj potrzebne pozycje." },
-            { title: "Wyślij mailowo do Magdy", html: "Dołącz <strong>adres dostawy</strong> oraz <strong>termin dostawy</strong>." },
-            { title: "Magda przygotowuje zamówienie", html: "Po stronie Leroy Merlin." },
+            { title: "Wyślij mailowo do opiekuna", html: "Dołącz <strong>adres dostawy</strong> oraz <strong>termin dostawy</strong>." },
+            { title: "Opiekun przygotowuje zamówienie", html: "Po stronie Leroy Merlin." },
             { title: "Zamówienie trafia do flippera", html: "Do akceptacji i opłacenia." },
             { title: "Flipper opłaca zamówienie", html: "Po opłaceniu realizowana jest dostawa." }
           ] }
@@ -373,7 +373,7 @@ window.KB_CONTENT = (function () {
 
       { t: "h", text: "Skrót: dostawca → metoda → kto płaci" },
       { t: "table", head: ["Dostawca", "Co zamawiamy", "Jak składamy", "Płatność"], rows: [
-        ["Leroy Merlin", "Materiały, wyposażenie, panele", "Mailowo do Magdy (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
+        ["Leroy Merlin", "Materiały, wyposażenie, panele", "Mailowo do opiekuna (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
         ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],
         ["Nexterio", "Płytki", "Koszyk na stronie, przelew tradycyjny", "Screenshot → flipper opłaca"],
         ["Mexen", "Armatura", "Platforma B2B, przelew tradycyjny", "Screenshot → flipper opłaca"],
@@ -398,7 +398,7 @@ window.KB_CONTENT = (function () {
   A.nadzor = {
     id: "nadzor-nad-remontem",
     title: "Nadzór nad remontem",
-    summary: "Wizyty min. 2× w tygodniu, kontakt z ekipą i raport po każdej wizycie — co dokładnie ma zawierać.",
+    summary: "Oględziny remontów, kontakt z ekipami i raporty po każdej wizycie — co dokładnie ma zawierać.",
     tags: ["nadzór", "raport", "wizyta", "kontrola", "harmonogram", "zdjęcia", "nozbe", "architekt"],
     updated: "2026-06-21",
     blocks: [
@@ -456,7 +456,7 @@ window.KB_CONTENT = (function () {
   A.terminy = {
     id: "terminy-i-dostawy",
     title: "Organizacja terminów i dostaw",
-    summary: "Kogo i kiedy umawiamy: stolarze, sprzątanie, homestaging, fotograf, kontenery, hydraulik, elektryk, pomocnik z busem — oraz logistyka dostaw.",
+    summary: "Kogo i kiedy umawiamy: stolarze, sprzątanie, homestaging, fotograf, kontenery, hydraulik, elektryk, pomocnik — oraz logistyka dostaw.",
     tags: ["terminy", "harmonogram", "stolarz", "fotograf", "sprzątanie", "homestaging", "kontener", "pomocnik", "bus", "dostawy", "logistyka"],
     updated: "2026-06-21",
     blocks: [
@@ -469,8 +469,8 @@ window.KB_CONTENT = (function () {
         { icon: "image", title: "Fotograf", html: "Zdjęcia gotowego mieszkania do oferty sprzedażowej." },
         { icon: "clipboard", title: "Sprzątaczki", html: "Sprzątanie poremontowe przed sesją i przekazaniem." },
         { icon: "truck", title: "Kontener na odpady", html: "Podstawienie i odbiór gruzu/odpadów w odpowiednim momencie." },
-        { icon: "bolt", title: "Elektryk (wyjątkowo)", html: "Np. wykonanie WLZ na rynku wtórnym." },
-        { icon: "tools", title: "Hydraulik (wyjątkowo)", html: "Np. przeniesienie wodomierzy." },
+        { icon: "bolt", title: "Elektryk", html: "Np. wykonanie WLZ na rynku wtórnym." },
+        { icon: "tools", title: "Hydraulik", html: "Np. przeniesienie wodomierzy, wymiana grzejników, przeróbki pionów." },
         { icon: "image", title: "Homestaging", html: "Aranżacja i dekoracja wnętrza przed sesją zdjęciową — lepsza prezentacja oferty." },
         { icon: "truck", title: "Pomocnik z busem", html: "Transport większych rzeczy: wywóz odpadów, dostawy, zwroty pozostałości." }
       ] },
@@ -529,7 +529,7 @@ window.KB_CONTENT = (function () {
     tags: ["odbiór", "odbiór prac", "usterki", "poprawki", "jakość", "kontrola"],
     updated: "2026-06-21",
     blocks: [
-      { t: "lead", html: "Odbiór wykończonego lokalu to moment, w którym sprawdzasz, czy prace zostały wykonane zgodnie z projektem i standardem, oraz spisujesz usterki do poprawy. To Twój odbiór prac od ekipy — nie mylić z odbiorem mieszkania od dewelopera, którego koordynator nie prowadzi." },
+      { t: "lead", html: "Odbiór wykończonego lokalu to moment, w którym sprawdzasz, czy prace zostały wykonane zgodnie z projektem i standardem, oraz spisujesz usterki do poprawy. To Twój odbiór prac od ekipy — nie mylić z odbiorem mieszkania od dewelopera." },
       { t: "note", variant: "info", title: "Kiedy robimy odbiór", html: "Gdy ekipa zgłasza zakończenie prac (lub etapu). Najlepiej z udziałem ekipy — od razu wskazujesz, co wymaga poprawy." },
 
       { t: "h", text: "Cel odbioru" },
@@ -584,7 +584,7 @@ window.KB_CONTENT = (function () {
   A.pierwotny = {
     id: "rynek-pierwotny",
     title: "Rynek pierwotny",
-    summary: "Mieszkania od deweloperów — większość naszych inwestycji. Prąd budowlany i organizacja startu prac w nowej inwestycji.",
+    summary: "Mieszkania od deweloperów — większość naszych inwestycji. Organizacja startu prac w nowej inwestycji.",
     tags: ["rynek pierwotny", "deweloper", "prąd budowlany", "nowa inwestycja", "start"],
     updated: "2026-06-21",
     blocks: [
@@ -653,7 +653,7 @@ window.KB_CONTENT = (function () {
       { t: "h", text: "Wymiana grzejników" },
       { t: "ul", items: [
         "Stare grzejniki często wymieniamy na nowe — ustal zakres i model ze standardem wykończenia.",
-        "Sprawdź sposób zasilania (instalacja c.o.) i ewentualne formalności przy ingerencji w piony.",
+        "Sprawdź ewentualne wymagania przy ingerencji w piony.",
         "Prace na pionach grzewczych mogą wymagać zgody/uzgodnienia ze spółdzielnią lub wspólnotą."
       ] },
 
@@ -695,29 +695,31 @@ window.KB_CONTENT = (function () {
     id: "dostawcy",
     title: "Dostawcy i miejsca zakupów",
     summary: "Skąd najczęściej zamawiamy materiały i wyposażenie — katalog dostawców z zakresem i kanałem zamawiania.",
-    tags: ["dostawcy", "leroy merlin", "mexen", "nexterio", "benmar", "allegro", "led-lux", "stolarze", "szklarze", "armatura", "płytki", "panele", "oświetlenie", "sztukateria"],
+    tags: ["dostawcy", "leroy merlin", "mexen", "nexterio", "benmar", "allegro", "led-lux", "media expert", "agd", "stolarze", "szklarze", "armatura", "płytki", "panele", "oświetlenie", "sztukateria"],
     updated: "2026-06-21",
     blocks: [
       { t: "lead", html: "To Twój podręczny katalog dostawców. Większość zamówień składasz w kilku stałych miejscach — dzięki temu wiesz, gdzie po co sięgnąć." },
 
       { t: "cards", items: [
-        { icon: "store", title: "Leroy Merlin", tag: "Materiały / panele", html: "Większość materiałów budowlanych i wyposażenia oraz panele. Zamówienia mailowo przez Magdę." },
+        { icon: "store", title: "Leroy Merlin", tag: "Materiały / panele", html: "Większość materiałów budowlanych i wyposażenia oraz panele. Zamówienia mailowo przez opiekuna." },
         { icon: "tools", title: "Mexen", tag: "Armatura", html: "Armatura łazienkowa i kuchenna. Zamawiamy przez platformę <strong>B2B</strong>, przelew tradycyjny." },
         { icon: "store", title: "Nexterio", tag: "Płytki", html: "Płytki. Zamówienie kompletujesz na stronie, płatność przelewem tradycyjnym." },
         { icon: "truck", title: "Benmar", tag: "Materiały + dostawa", html: "Materiały budowlane wraz z organizacją dostawy na inwestycję." },
-        { icon: "hardhat", title: "Stolarze", tag: "Kuchnie / zabudowy", html: "Kuchnie oraz zabudowy stałe wykonywane na wymiar." },
+        { icon: "hardhat", title: "Stolarze", tag: "Kuchnie / zabudowy", html: "Kuchnie oraz zabudowy stałe na wymiar. Montują też AGD przy zabudowie." },
         { icon: "image", title: "Szklarze", tag: "Lustra", html: "Lustra łazienkowe wykonywane na wymiar." },
         { icon: "store", title: "Allegro", tag: "Sztukateria / lustra / oświetlenie", html: "Sztukateria, listwy, gotowe lustra, oświetlenie i drobne wyposażenie." },
-        { icon: "bolt", title: "Led-Lux", tag: "Oświetlenie", html: "Wyspecjalizowany dostawca oświetlenia." }
+        { icon: "bolt", title: "Led-Lux", tag: "Oświetlenie", html: "Wyspecjalizowany dostawca oświetlenia." },
+        { icon: "store", title: "Media Expert", tag: "AGD", html: "Sprzęt AGD do mieszkań. Montaż AGD najczęściej wykonują stolarze przy zabudowie." }
       ] },
 
       { t: "h", text: "Katalog — co, gdzie i jak" },
       { t: "table", head: ["Dostawca", "Co zamawiamy", "Kanał", "Płatność"], rows: [
-        ["Leroy Merlin", "Materiały budowlane, wyposażenie, panele", "Mail do Magdy (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
+        ["Leroy Merlin", "Materiały budowlane, wyposażenie, panele", "Mail do opiekuna (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
         ["Mexen", "Armatura", "Platforma B2B", "Przelew tradycyjny — screenshot do flippera"],
         ["Nexterio", "Płytki", "Strona internetowa", "Przelew tradycyjny — screenshot do flippera"],
         ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Strona Allegro", "Przelew tradycyjny — screenshot do flippera"],
         ["Led-Lux", "Oświetlenie", "Zamówienie u dostawcy", "Przelew tradycyjny — screenshot do flippera"],
+        ["Media Expert", "AGD (montaż: stolarze)", "Zamówienie u dostawcy", "Wg ustaleń z flipperem"],
         ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],
         ["Stolarze", "Kuchnie, zabudowy stałe", "Pomiar + zamówienie indywidualne", "Wg ustaleń z flipperem"],
         ["Szklarze", "Lustra łazienkowe na wymiar", "Pomiar + zamówienie indywidualne", "Wg ustaleń z flipperem"]
@@ -725,7 +727,7 @@ window.KB_CONTENT = (function () {
       { t: "note", variant: "info", title: "Procedury zamówień", html: "Dokładne kroki dla Leroy Merlin, Benmar, Nexterio, Mexen, Allegro i Led-Lux znajdziesz w artykule <a href='#/koordynator-remontow/zamawianie-materialow'>Zamawianie materiałów</a>." },
 
       { t: "h", text: "Kontakty" },
-      { t: "p", html: "Dane kontaktowe i dostępy do dostawców (osoby, telefony, loginy B2B — np. kontakt do Magdy w Leroy Merlin czy konto B2B Mexen) <strong>uzyskasz od flippera</strong>. Jeśli czegoś brakuje — poproś o kontakt przed złożeniem zamówienia." },
+      { t: "p", html: "Dane kontaktowe i dostępy do dostawców (osoby, telefony, loginy B2B — np. kontakt do opiekuna w Leroy Merlin czy konto B2B Mexen) <strong>uzyskasz od flippera</strong>. Jeśli czegoś brakuje — poproś o kontakt przed złożeniem zamówienia." },
       { t: "note", variant: "tip", html: "Gdy znajdziesz nowego, dobrego dostawcę (np. lepsza cena lub krótszy termin) — zaproponuj go flipperowi i dopisz do tego katalogu." }
     ]
   };
@@ -785,7 +787,7 @@ window.KB_CONTENT = (function () {
         "Zainstalowany WhatsApp + dodane kontakty zespołu i ekip.",
         "Dostęp do Arkuszy Google z budżetami remontów.",
         "Znajomość struktury folderów na Dysku.",
-        "Dostęp do platformy B2B Mexen i kontaktu w Leroy Merlin (Magda)."
+        "Dostęp do platformy B2B Mexen i kontaktu w Leroy Merlin."
       ] }
     ]
   };
@@ -827,7 +829,7 @@ window.KB_CONTENT = (function () {
     tags: ["checklisty", "listy kontrolne", "procedury", "start", "odbiór", "zakończenie"],
     updated: "2026-06-21",
     blocks: [
-      { t: "lead", html: "Zebrane w jednym miejscu listy kontrolne. Zaznaczenia zapisują się w Twojej przeglądarce, więc możesz wracać do nich w trakcie pracy. Listę możesz też wydrukować (przycisk „Drukuj / PDF” u góry)." },
+      { t: "lead", html: "Zebrane w jednym miejscu listy kontrolne. Odhaczaj punkty na bieżąco podczas pracy — zaznaczenia nie są zapisywane (służą do bieżącej kontroli). Listę możesz też wydrukować (przycisk „Drukuj / PDF” u góry)." },
 
       { t: "h", text: "Start nowej inwestycji" },
       { t: "check", title: "Uruchomienie inwestycji", id: "cl-start", items: [
