@@ -492,9 +492,9 @@ table.tbl tbody tr:hover { background: var(--hover); }
 }
 .file-item:hover { border-color: var(--border-strong); background: var(--hover); }
 .file-item__ic { width: 38px; height: 38px; border-radius: 8px; display: grid; place-items: center; background: var(--surface-2); color: var(--text-2); flex-shrink: 0; font-size: 10px; font-weight: 700; letter-spacing: .03em; }
-.file-item__meta { min-width: 0; flex: 1; }
-.file-item__name { font-weight: 600; font-size: 14px; }
-.file-item__note { font-size: 12.5px; color: var(--text-3); }
+.file-item__meta { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.file-item__name { font-weight: 600; font-size: 14px; line-height: 1.35; }
+.file-item__note { display: block; font-size: 12.5px; color: var(--text-3); line-height: 1.4; }
 .file-item__dl { color: var(--text-3); flex-shrink: 0; }
 .file-item:hover .file-item__dl { color: var(--text); }
 

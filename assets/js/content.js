@@ -51,8 +51,8 @@ window.KB_CONTENT = (function () {
         { title: "Uruchomienie prac", html: "Organizujesz start: dostęp do lokalu, prąd budowlany (rynek pierwotny), pierwsze materiały i harmonogram." },
         { title: "Nadzór i kontakt", html: "Odwiedzasz inwestycję min. 2× w tygodniu, jesteś w bieżącym kontakcie z ekipą, rozwiązujesz problemy." },
         { title: "Materiały i dostawy", html: "Na bieżąco zamawiasz materiały według list od ekipy i pilnujesz terminów dostaw." },
-        { title: "Raportowanie", html: "Po każdej wizycie wysyłasz flipperowi raport ze zdjęciami i statusem." },
-        { title: "Zakończenie", html: "Organizujesz sprzątanie, ewentualne poprawki, fotografa — mieszkanie trafia do sprzedaży." }
+        { title: "Raportowanie", html: "Po każdej wizycie dodajesz raport ze zdjęciami do Nozbe (i informujesz flippera)." },
+        { title: "Zakończenie", html: "Odbiór prac od ekipy, poprawki, sprzątanie, homestaging i fotograf — mieszkanie trafia do sprzedaży." }
       ] },
 
       { t: "h", text: "Od czego zacząć" },
@@ -114,6 +114,13 @@ window.KB_CONTENT = (function () {
         "W razie potrzeby — hydraulików (np. przeniesienie wodomierzy) oraz elektryków (np. wykonanie WLZ na rynku wtórnym)."
       ] },
 
+      { t: "h", text: "5. Rozwiązywanie sytuacji awaryjnych" },
+      { t: "ul", items: [
+        "Gdy ekipa lub inna osoba odpowiedzialna czegoś nie wykona albo nie może wykonać — w zależności od sytuacji organizujesz to samodzielnie.",
+        "Masz też do dyspozycji <strong>pomocnika z busem</strong>, który przewozi większe rzeczy: wywóz pozostałych odpadów po remoncie, transport większych elementów od dostawcy, zwroty pozostałości materiałów.",
+        "Odbiór wykończonych prac od ekipy i egzekwowanie poprawek — patrz <a href='#/koordynator-remontow/odbior-prac'>Odbiór wykończonego lokalu</a>."
+      ] },
+
       { t: "h", text: "Kluczowe parametry roli" },
       { t: "kv", items: [
         { k: "Wizyty na inwestycji", v: "Minimum 2× w tygodniu, każda zakończona raportem." },
@@ -121,6 +128,8 @@ window.KB_CONTENT = (function () {
         { k: "Typ ekip", v: "Kompleksowe (wykończenie + elektryka + hydraulika)." },
         { k: "Umowy", v: "Zawsze na wzorze dostarczonym przez flippera." },
         { k: "Płatności za materiały", v: "Realizuje flipper (Ty kompletujesz i przekazujesz do opłacenia)." },
+        { k: "Wykończenie i projekt", v: "Decyduje flipper (panele, płytki, kolory, armatura); pytania techniczne ekip → architekt." },
+        { k: "Wsparcie logistyczne", v: "Pomocnik z busem (wywóz odpadów, transport, zwroty pozostałości)." },
         { k: "Eskalacja", v: "Brak wiedzy / decyzja poza zakresem → konsultacja z flipperem." }
       ] },
       { t: "note", variant: "warn", title: "Czego nie rozstrzygasz samodzielnie", html: "Zmiana zakresu prac, istotne odstępstwa od standardu, dodatkowe koszty i kwestie finansowe wymagają zgody flippera. Szczegóły w artykule <a href='#/koordynator-remontow/co-robimy-czego-nie'>Co robimy / czego nie robimy</a>." }
@@ -139,11 +148,16 @@ window.KB_CONTENT = (function () {
       { t: "note", variant: "success", title: "✅ Co robimy", html: "<ul><li>Aktywnie szukamy i rekrutujemy <strong>ekipy kompleksowe</strong>.</li><li>Spotykamy się na inwestycji, omawiamy zakres, standard, termin i wycenę.</li><li>Podpisujemy umowy na wzorze flippera.</li><li>Zamawiamy materiały i koordynujemy dostawy.</li><li>Nadzorujemy prace (min. 2×/tydzień) i raportujemy.</li><li>Organizujemy stolarzy, sprzątanie, fotografa, kontenery, w razie potrzeby hydraulika/elektryka.</li><li>Jesteśmy pierwszym kontaktem dla ekipy w sprawach bieżących.</li></ul>" },
       { t: "note", variant: "danger", title: "🚫 Czego nie robimy", html: "<ul><li>Nie rekrutujemy osobno elektryków ani hydraulików — tylko wyjątkowo, gdy sytuacja tego wymaga.</li><li>Nie zlecamy prac bez podpisanej umowy.</li><li>Nie zmieniamy zakresu prac ani standardu bez zgody flippera.</li><li>Nie opłacamy materiałów z własnych środków bez wcześniejszych ustaleń.</li><li>Nie podejmujemy samodzielnie decyzji finansowych i projektowych.</li><li>Nie obiecujemy ekipie rzeczy, których nie potwierdził flipper.</li><li>Nie wykonujemy prac remontowych własnoręcznie — od tego jest ekipa.</li></ul>" },
 
+      { t: "h", text: "Decyzje wykończeniowe i projekt — po stronie flippera" },
+      { t: "p", html: "O ostatecznym wyglądzie mieszkania decyduje <strong>flipper</strong>. To on przekazuje Ci wytyczne dotyczące standardu i konkretnych materiałów, a Twoim zadaniem jest je zrealizować przy zamawianiu i nadzorze." },
+      { t: "note", variant: "info", title: "Co ustala flipper", html: "Flipper informuje koordynatora m.in. o tym, jakie mają być: <strong>panele</strong>, <strong>płytki</strong>, <strong>kolory ścian</strong>, <strong>kolory frontów zabudów stolarskich</strong>, <strong>armatura</strong> oraz pozostałe elementy wykończenia. Jeśli czegoś brakuje w wytycznych — dopytaj, zanim zamówisz." },
+      { t: "p", html: "Za <strong>projekt i rysunki techniczne</strong> również odpowiada flipper. Jeśli ekipa ma pytania dotyczące projektu, na które nie potrafisz odpowiedzieć, może skontaktować się z <strong>architektem</strong> (kontakt udostępnia flipper) — patrz <a href='#/koordynator-remontow/nadzor-nad-remontem'>Nadzór nad remontem</a>." },
+
       { t: "h", text: "Nasze standardy pracy" },
       { t: "ul", items: [
         "<strong>Jakość przede wszystkim.</strong> Wykończenie ma wyglądać jak produkt premium gotowy do sprzedaży.",
         "<strong>Terminowość.</strong> Pilnujemy harmonogramu i reagujemy, gdy coś się opóźnia.",
-        "<strong>Dokumentacja.</strong> Każda wizyta = zdjęcia i krótki raport. Wszystko ląduje na Dysku Google.",
+        "<strong>Dokumentacja.</strong> Każda wizyta = zdjęcia i krótki raport. Raporty i zdjęcia z remontów trafiają do <strong>Nozbe</strong>.",
         "<strong>Komunikacja.</strong> Szybkie, konkretne odpowiedzi na WhatsAppie. Brak odpowiedzi też jest odpowiedzią — unikamy ciszy.",
         "<strong>Transparentność kosztów.</strong> Koszty kontrolujemy w Arkuszach Google; nie ma niespodzianek."
       ] },
@@ -182,7 +196,7 @@ window.KB_CONTENT = (function () {
       { t: "kv", items: [
         { k: "Proaktywność", v: "Sam wychodzisz z inicjatywą: szukasz ekip, przypominasz o terminach, sygnalizujesz ryzyka zanim staną się problemem." },
         { k: "Rzetelne raporty", v: "Po każdej wizycie: zdjęcia, etap prac, status względem harmonogramu, problemy, potrzeby na kolejny tydzień." },
-        { k: "Porządek w dokumentach", v: "Umowy, faktury i zdjęcia w odpowiednich folderach na Dysku Google." },
+        { k: "Porządek w dokumentach", v: "Umowy i faktury na Dysku Google; zdjęcia i raporty z remontów w Nozbe." },
         { k: "Kontrola kosztów", v: "Wydatki na bieżąco wpisywane do Arkusza Google danej inwestycji." },
         { k: "Samodzielność", v: "Rozwiązujesz typowe sytuacje sam; eskalujesz tylko to, co naprawdę wymaga decyzji flippera." }
       ] },
@@ -196,7 +210,7 @@ window.KB_CONTENT = (function () {
         "Potwierdzone terminy dostaw i podwykonawców na najbliższe dni.",
         "Przejrzane zaległe wiadomości od ekip i flippera — brak „wiszących” pytań."
       ] },
-      { t: "note", variant: "info", title: "Jedna inwestycja = jedno miejsce prawdy", html: "Dla każdej inwestycji utrzymuj jeden folder na Dysku i jeden arkusz kosztów. Dzięki temu, gdy prowadzisz 4–5 remontów naraz, nic Ci nie umyka." }
+      { t: "note", variant: "info", title: "Jedna inwestycja = jedno miejsce prawdy", html: "Dla każdej inwestycji trzymaj porządek: dokumenty na Dysku Google, zdjęcia i raporty w Nozbe, koszty w jednym arkuszu. Dzięki temu, gdy prowadzisz 4–5 remontów naraz, nic Ci nie umyka." }
     ]
   };
 
@@ -229,13 +243,15 @@ window.KB_CONTENT = (function () {
         "Prośba o <strong>przesłanie realizacji</strong> (zdjęcia) oraz <strong>numeru telefonu</strong>."
       ] },
       { t: "tabs", items: [
-        { label: "Wzór: Facebook / Spotted", blocks: [
-          { t: "p", html: "<em>Skopiuj i dostosuj dane inwestycji:</em>" },
-          { t: "note", variant: "info", html: "Poszukuję <strong>kompleksowej ekipy remontowej</strong> do wykończenia mieszkania (<strong>[dzielnica, miasto]</strong>).<br>Zakres: pełne wykończenie pod klucz — w tym elektryka i hydraulika.<br>Start: <strong>[termin]</strong>.<br>Proszę o przesłanie <strong>realizacji (zdjęcia)</strong> oraz <strong>numeru telefonu</strong> w wiadomości. Odezwę się do wybranych ekip i umówię spotkanie na miejscu. Z góry dziękuję!" }
+        { label: "Wzór wiadomości (rynek pierwotny)", blocks: [
+          { t: "p", html: "<em>Sprawdzony wzór do skopiowania — uzupełnij dane w nawiasach:</em>" },
+          { t: "note", variant: "info", html: "Poszukuję zespołu wykonawców, którzy wykonają remont mieszkania w stanie deweloperskim <strong>[metraż] m²</strong> na <strong>[parter / piętro]</strong> (rynek pierwotny) w <strong>[miasto]</strong>. Zakres prac to <strong>prosty standard</strong>, bez zmian układu, bez przeróbek kuchni ani łazienki. Mam gotowy projekt i rysunki, zapewniam materiały. Szukam <strong>ekipy kompleksowej</strong> (wykończenie + elektryka + hydraulika).<br>Możliwy start w <strong>[miesiąc]</strong>. Proszę o odpowiedź zwrotną, czy taki termin odpowiada, a jeśli tak — jak to wygląda cenowo. Proszę też o <strong>przykładowe realizacje</strong> oraz <strong>numer telefonu</strong>. Pozdrawiam." }
         ] },
-        { label: "Wzór: Fixly", blocks: [
-          { t: "p", html: "<em>Wypełnij formularz zlecenia, a w opisie wpisz:</em>" },
-          { t: "note", variant: "info", html: "Kompleksowe wykończenie mieszkania <strong>[metraż] m²</strong>, <strong>[dzielnica, miasto]</strong>. Zakres: wykończenie + elektryka + hydraulika. Start: <strong>[termin]</strong>. Proszę o wycenę oraz przykładowe realizacje. Spotkanie i szczegóły na inwestycji." }
+        { label: "Wariant: Facebook / Spotted", blocks: [
+          { t: "note", variant: "info", html: "Poszukuję <strong>kompleksowej ekipy remontowej</strong> do wykończenia mieszkania (<strong>[dzielnica, miasto]</strong>).<br>Zakres: pełne wykończenie pod klucz — w tym elektryka i hydraulika. Mam gotowy projekt i zapewniam materiały.<br>Start: <strong>[termin]</strong>.<br>Proszę o przesłanie <strong>realizacji (zdjęcia)</strong> oraz <strong>numeru telefonu</strong> w wiadomości. Odezwę się do wybranych ekip i umówię spotkanie na miejscu. Z góry dziękuję!" }
+        ] },
+        { label: "Wariant: Fixly", blocks: [
+          { t: "note", variant: "info", html: "Kompleksowe wykończenie mieszkania <strong>[metraż] m²</strong>, <strong>[dzielnica, miasto]</strong>. Zakres: wykończenie + elektryka + hydraulika, prosty standard. Mam gotowy projekt i materiały. Start: <strong>[termin]</strong>. Proszę o wycenę oraz przykładowe realizacje. Spotkanie i szczegóły na inwestycji." }
         ] }
       ] },
 
@@ -265,8 +281,7 @@ window.KB_CONTENT = (function () {
       { t: "p", html: "Umowę zawsze zawieramy na <strong>gotowym wzorze, który dostarcza flipper</strong>. Nie tworzysz własnych umów ani nie zlecasz prac „na słowo”." },
       { t: "note", variant: "danger", title: "Zasada bezwzględna", html: "Żadne prace nie ruszają bez podpisanej umowy. To chroni i nas, i ekipę." },
       { t: "files", items: [
-        { name: "Wzór umowy z ekipą remontową", type: "PDF", note: "Dostarcza flipper — podlinkuj plik z Dysku Google w content.js" },
-        { name: "Wzór ogłoszenia rekrutacyjnego", type: "DOC", note: "Opcjonalnie — gotowiec do kopiowania" }
+        { name: "Wzór umowy z ekipą remontową", type: "PDF", note: "Udostępnia flipper" }
       ] },
 
       { t: "h", text: "Najczęstsze błędy" },
@@ -283,11 +298,12 @@ window.KB_CONTENT = (function () {
   A.materialy = {
     id: "zamawianie-materialow",
     title: "Zamawianie materiałów",
-    summary: "Ogólny obieg zamówień oraz dokładne procedury dla Benmar, Leroy Merlin, Nexterio i Mexen.",
-    tags: ["materiały", "zamówienia", "leroy merlin", "benmar", "nexterio", "mexen", "płatności", "dostawa"],
+    summary: "Ogólny obieg zamówień oraz dokładne procedury dla Leroy Merlin, Benmar, Nexterio, Mexen, Allegro i Led-Lux.",
+    tags: ["materiały", "zamówienia", "leroy merlin", "benmar", "nexterio", "mexen", "allegro", "led-lux", "oświetlenie", "sztukateria", "płatności", "dostawa"],
     updated: "2026-06-21",
     blocks: [
       { t: "lead", html: "Materiały zamawiasz na podstawie list od ekipy oraz potrzeb wynikających ze standardu wykończenia. Obowiązuje stała zasada płatności: <strong>zamówienie kompletujesz Ty, opłaca je flipper</strong>." },
+      { t: "note", variant: "info", title: "Co zamawiamy, wynika z wytycznych flippera", html: "Konkretne materiały (panele, płytki, kolory, armatura, oświetlenie itd.) wskazuje <strong>flipper</strong>. Ty zamawiasz zgodnie z tymi wytycznymi i projektem — patrz <a href='#/koordynator-remontow/co-robimy-czego-nie'>Co robimy / czego nie robimy</a>." },
 
       { t: "h", text: "Ogólny obieg zamówienia" },
       { t: "steps", items: [
@@ -336,6 +352,22 @@ window.KB_CONTENT = (function () {
             { title: "Zrzut ekranu z danymi do przelewu", html: "Zapisz screenshot." },
             { title: "Wyślij screenshot flipperowi", html: "W celu opłacenia zamówienia." }
           ] }
+        ] },
+        { label: "Allegro", blocks: [
+          { t: "p", html: "Sztukateria, listwy, gotowe lustra, oświetlenie i drobne wyposażenie." },
+          { t: "steps", items: [
+            { title: "Skompletuj koszyk", html: "Dodaj potrzebne pozycje (sztukateria, listwy, gotowe lustra, oświetlenie itp.)." },
+            { title: "Wybierz przelew tradycyjny", html: "Przygotuj podsumowanie / zrzut ekranu z danymi do płatności." },
+            { title: "Wyślij flipperowi do opłacenia", html: "Po opłaceniu pilnujesz dostawy na inwestycję." }
+          ] }
+        ] },
+        { label: "Led-Lux", blocks: [
+          { t: "p", html: "Wyspecjalizowany dostawca <strong>oświetlenia</strong>." },
+          { t: "steps", items: [
+            { title: "Skompletuj listę oświetlenia", html: "Według projektu i wytycznych flippera." },
+            { title: "Ustal zamówienie i płatność", html: "Przygotuj podsumowanie / zrzut ekranu z danymi do przelewu." },
+            { title: "Przekaż flipperowi do opłacenia", html: "Następnie koordynujesz dostawę." }
+          ] }
         ] }
       ] },
 
@@ -344,7 +376,9 @@ window.KB_CONTENT = (function () {
         ["Leroy Merlin", "Materiały, wyposażenie, panele", "Mailowo do Magdy (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
         ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],
         ["Nexterio", "Płytki", "Koszyk na stronie, przelew tradycyjny", "Screenshot → flipper opłaca"],
-        ["Mexen", "Armatura", "Platforma B2B, przelew tradycyjny", "Screenshot → flipper opłaca"]
+        ["Mexen", "Armatura", "Platforma B2B, przelew tradycyjny", "Screenshot → flipper opłaca"],
+        ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Koszyk na Allegro, przelew tradycyjny", "Screenshot → flipper opłaca"],
+        ["Led-Lux", "Oświetlenie", "Zamówienie u dostawcy", "Screenshot → flipper opłaca"]
       ], caption: "Pełne kroki dla każdego dostawcy znajdziesz w zakładkach powyżej." },
 
       { t: "h", text: "Zanim wyślesz zamówienie" },
@@ -365,7 +399,7 @@ window.KB_CONTENT = (function () {
     id: "nadzor-nad-remontem",
     title: "Nadzór nad remontem",
     summary: "Wizyty min. 2× w tygodniu, kontakt z ekipą i raport po każdej wizycie — co dokładnie ma zawierać.",
-    tags: ["nadzór", "raport", "wizyta", "kontrola", "harmonogram", "zdjęcia"],
+    tags: ["nadzór", "raport", "wizyta", "kontrola", "harmonogram", "zdjęcia", "nozbe", "architekt"],
     updated: "2026-06-21",
     blocks: [
       { t: "lead", html: "Regularny nadzór to serce Twojej roli. Dzięki niemu flipper ma stały wgląd w postęp wszystkich inwestycji, a problemy łapiemy zanim urosną." },
@@ -377,7 +411,7 @@ window.KB_CONTENT = (function () {
         { title: "Dokumentacja zdjęciowa", html: "Robisz zdjęcia każdego pomieszczenia i kluczowych detali." },
         { title: "Rozmowa z ekipą", html: "Pytasz o postępy, blokery i potrzeby na kolejny tydzień." },
         { title: "Notujesz problemy i decyzje", html: "Wszystko, co wymaga reakcji Twojej lub flippera." },
-        { title: "Wysyłasz raport", html: "Po wizycie przekazujesz flipperowi raport ze zdjęciami." }
+        { title: "Dodajesz raport do Nozbe", html: "Po wizycie dodajesz raport ze zdjęciami do Nozbe i w razie potrzeby informujesz flippera." }
       ] },
 
       { t: "h", text: "Raport z wizyty — co zawiera" },
@@ -389,13 +423,13 @@ window.KB_CONTENT = (function () {
         { k: "Problemy", v: "Lista ewentualnych problemów i ryzyk." },
         { k: "Potrzeby na kolejny tydzień", v: "Materiały, decyzje, zamówienia, dodatkowe prace itp." }
       ] },
-      { t: "img", alt: "Przykład dokumentacji zdjęciowej z wizyty", placeholder: "Wstaw przykładowe zdjęcia z raportu, ustawiając pole „src” w content.js.", caption: "Dokumentacja zdjęciowa to obowiązkowy element każdego raportu." },
-      { t: "note", variant: "info", title: "Gdzie trafia raport", html: "Raport wraz ze zdjęciami przekazujesz flipperowi (WhatsApp), a zdjęcia archiwizujesz w folderze inwestycji na Dysku Google." },
+      { t: "note", variant: "info", title: "Gdzie trafia raport", html: "Raport wraz ze zdjęciami dodajesz do <strong>Nozbe</strong> — tam prowadzimy raportowanie i zarządzanie flipami. Zdjęć z remontów nie wrzucamy na Dysk Google. O gotowym raporcie możesz krótko poinformować flippera na WhatsApp." },
 
       { t: "h", text: "Bieżący kontakt z ekipą" },
       { t: "ul", items: [
         "Jesteś pierwszym kontaktem ekipy w sprawach bieżących.",
         "Na pytania, które znasz — odpowiadasz od razu. Gdy brakuje wiedzy — konsultujesz z flipperem i wracasz z odpowiedzią.",
+        "Pytania techniczne dotyczące <strong>projektu i rysunków</strong> (za które odpowiada flipper) ekipa może kierować do <strong>architekta</strong> — kontakt udostępnia flipper.",
         "Nie zostawiasz ekipy bez odpowiedzi — przestój generuje koszty i opóźnienia."
       ] },
 
@@ -413,8 +447,8 @@ window.KB_CONTENT = (function () {
         "Określony status względem harmonogramu.",
         "Spisane problemy / ryzyka.",
         "Spisane potrzeby ekipy na kolejny tydzień.",
-        "Raport wysłany flipperowi.",
-        "Zdjęcia wrzucone do folderu inwestycji na Dysku."
+        "Raport ze zdjęciami dodany do Nozbe.",
+        "W razie potrzeby flipper poinformowany o statusie."
       ] }
     ]
   };
@@ -422,8 +456,8 @@ window.KB_CONTENT = (function () {
   A.terminy = {
     id: "terminy-i-dostawy",
     title: "Organizacja terminów i dostaw",
-    summary: "Kogo i kiedy umawiamy: stolarze, sprzątanie, fotograf, kontenery, hydraulik, elektryk — oraz logistyka dostaw.",
-    tags: ["terminy", "harmonogram", "stolarz", "fotograf", "sprzątanie", "kontener", "dostawy", "logistyka"],
+    summary: "Kogo i kiedy umawiamy: stolarze, sprzątanie, homestaging, fotograf, kontenery, hydraulik, elektryk, pomocnik z busem — oraz logistyka dostaw.",
+    tags: ["terminy", "harmonogram", "stolarz", "fotograf", "sprzątanie", "homestaging", "kontener", "pomocnik", "bus", "dostawy", "logistyka"],
     updated: "2026-06-21",
     blocks: [
       { t: "lead", html: "Remont to nie tylko ekipa. Wokół niej krąży kilku podwykonawców i dostaw, które trzeba spiąć w czasie, żeby nikt na nikogo nie czekał." },
@@ -436,7 +470,9 @@ window.KB_CONTENT = (function () {
         { icon: "clipboard", title: "Sprzątaczki", html: "Sprzątanie poremontowe przed sesją i przekazaniem." },
         { icon: "truck", title: "Kontener na odpady", html: "Podstawienie i odbiór gruzu/odpadów w odpowiednim momencie." },
         { icon: "bolt", title: "Elektryk (wyjątkowo)", html: "Np. wykonanie WLZ na rynku wtórnym." },
-        { icon: "tools", title: "Hydraulik (wyjątkowo)", html: "Np. przeniesienie wodomierzy." }
+        { icon: "tools", title: "Hydraulik (wyjątkowo)", html: "Np. przeniesienie wodomierzy." },
+        { icon: "image", title: "Homestaging", html: "Aranżacja i dekoracja wnętrza przed sesją zdjęciową — lepsza prezentacja oferty." },
+        { icon: "truck", title: "Pomocnik z busem", html: "Transport większych rzeczy: wywóz odpadów, dostawy, zwroty pozostałości." }
       ] },
 
       { t: "h", text: "Typowa kolejność prac" },
@@ -449,7 +485,8 @@ window.KB_CONTENT = (function () {
         { title: "Podłogi, biały montaż, armatura", html: "Panele, drzwi, montaż armatury (Mexen) i ceramiki." },
         { title: "Montaż kuchni i zabudów", html: "Stolarze montują na umówiony termin." },
         { title: "Lustra na wymiar", html: "Szklarz po ustaleniu finalnych wymiarów w łazience." },
-        { title: "Sprzątanie poremontowe", html: "Tuż przed sesją zdjęciową." },
+        { title: "Sprzątanie poremontowe", html: "Przed homestagingiem i sesją zdjęciową." },
+        { title: "Homestaging", html: "Aranżacja i dekoracja wnętrza, aby mieszkanie lepiej prezentowało się na zdjęciach i w ofercie." },
         { title: "Sesja zdjęciowa", html: "Fotograf — materiał do oferty sprzedaży." }
       ] },
       { t: "note", variant: "tip", title: "Zasada wyprzedzenia", html: "Stolarzy i fotografa rezerwuj z wyprzedzeniem — dobre terminy potrafią być zajęte. Pomiar stolarki umawiaj dopiero, gdy ściany i instalacje są na swoim miejscu." },
@@ -461,15 +498,83 @@ window.KB_CONTENT = (function () {
         "Przy większych dostawach uprzedź ekipę, żeby zaplanowała pracę.",
         "Na rynku pierwotnym pamiętaj o kwestii <strong>prądu budowlanego</strong> — patrz <a href='#/koordynator-remontow/rynek-pierwotny'>Rynek pierwotny</a>."
       ] },
+
+      { t: "h", text: "Pomocnik z busem i sytuacje awaryjne" },
+      { t: "p", html: "Gdy ekipa lub podwykonawca czegoś nie wykona albo trzeba przewieźć coś większego, masz do dyspozycji <strong>pomocnika z busem</strong>." },
+      { t: "ul", items: [
+        "Wywóz pozostałych odpadów po remoncie.",
+        "Transport większych elementów od dostawcy na inwestycję.",
+        "Zwroty pozostałości materiałów z remontu.",
+        "Inne sytuacje wymagające większego transportu."
+      ] },
+
       { t: "check", title: "Checklista koordynacji terminów", id: "checklista-koordynacji", items: [
         "Harmonogram prac ekipy znany i aktualny.",
         "Kontener na odpady umówiony na etap rozbiórki.",
         "Pomiar stolarki zaplanowany po gotowości ścian/instalacji.",
         "Montaż kuchni i zabudów potwierdzony ze stolarzem.",
         "Szklarz umówiony po finalnych wymiarach luster.",
-        "Sprzątanie poremontowe zarezerwowane przed sesją.",
-        "Fotograf zarezerwowany na termin po sprzątaniu.",
+        "Sprzątanie poremontowe zarezerwowane przed homestagingiem.",
+        "Homestaging zaplanowany przed sesją zdjęciową.",
+        "Fotograf zarezerwowany na termin po homestagingu.",
         "Dostawy zsynchronizowane z dostępem do lokalu."
+      ] }
+    ]
+  };
+
+  A.odbior = {
+    id: "odbior-prac",
+    title: "Odbiór wykończonego lokalu",
+    summary: "Jak odebrać prace od ekipy: co dokładnie sprawdzić pomieszczenie po pomieszczeniu, jak spisać usterki i wyegzekwować poprawki.",
+    tags: ["odbiór", "odbiór prac", "usterki", "poprawki", "jakość", "kontrola"],
+    updated: "2026-06-21",
+    blocks: [
+      { t: "lead", html: "Odbiór wykończonego lokalu to moment, w którym sprawdzasz, czy prace zostały wykonane zgodnie z projektem i standardem, oraz spisujesz usterki do poprawy. To Twój odbiór prac od ekipy — nie mylić z odbiorem mieszkania od dewelopera, którego koordynator nie prowadzi." },
+      { t: "note", variant: "info", title: "Kiedy robimy odbiór", html: "Gdy ekipa zgłasza zakończenie prac (lub etapu). Najlepiej z udziałem ekipy — od razu wskazujesz, co wymaga poprawy." },
+
+      { t: "h", text: "Cel odbioru" },
+      { t: "ul", items: [
+        "Potwierdzić zgodność wykonania z <strong>projektem</strong> i ustalonym <strong>standardem</strong>.",
+        "Wychwycić usterki i niedoróbki, zanim mieszkanie trafi do homestagingu i sprzedaży.",
+        "Wyegzekwować poprawki w ramach umowy, zanim nastąpi rozliczenie z ekipą."
+      ] },
+
+      { t: "h", text: "Co sprawdzić — pomieszczenie po pomieszczeniu" },
+      { t: "p", html: "Przejdź cały lokal metodycznie. Dobre światło i miarka bardzo pomagają." },
+      { t: "table", head: ["Obszar", "Na co zwrócić uwagę"], rows: [
+        ["Ściany i malowanie", "Równość, brak zacieków, smug i przebarwień; jednolity kolor; brak pęknięć."],
+        ["Płytki i fugi", "Równe ułożenie, brak pustek pod płytką, równe i czyste fugi, estetyczny silikon."],
+        ["Podłogi i listwy", "Panele bez uszkodzeń i szczelin, listwy równo, dylatacje przy ścianach."],
+        ["Drzwi i okna", "Montaż, regulacja, domykanie, brak rys i uszkodzeń."],
+        ["Biały montaż i armatura", "Szczelność, brak przecieków, stabilny montaż, estetyka."],
+        ["Elektryka", "Działające gniazdka, włączniki i oświetlenie; równo osadzony osprzęt."],
+        ["Stolarka (kuchnia, zabudowy)", "Równe szczeliny, domyk frontów, zgodność z projektem i kolorem."],
+        ["Wykończenie ogólne", "Sztukateria, listwy ozdobne, lustra — równo i estetycznie."],
+        ["Czystość", "Brak resztek kleju, farby, zaprawy; lokal gotowy do sprzątania/homestagingu."]
+      ] },
+
+      { t: "h", text: "Usterki i poprawki" },
+      { t: "steps", items: [
+        { title: "Spisz usterki", html: "Zrób listę z dokumentacją zdjęciową (zdjęcia trafiają do Nozbe)." },
+        { title: "Ustal poprawki z ekipą", html: "Wskaż, co i do kiedy ma być poprawione — w ramach umowy." },
+        { title: "Sprawdź wykonanie poprawek", html: "Odbiór kontrolny po naprawach; dokumentuj efekt." },
+        { title: "Zgłoś status flipperowi", html: "Raport z odbioru w Nozbe; sprawy sporne konsultuj z flipperem przed rozliczeniem." }
+      ] },
+      { t: "note", variant: "warn", title: "Najpierw poprawki, potem dalsze etapy", html: "Homestaging i sesję zdjęciową planuj dopiero po usunięciu usterek. Poprawki po wniesieniu dekoracji są dużo bardziej kłopotliwe." },
+
+      { t: "h", text: "Co dalej" },
+      { t: "p", html: "Po czystym odbiorze: sprzątanie poremontowe → homestaging → sesja zdjęciowa → przekazanie do sprzedaży. Kolejność i terminy ogarniasz w <a href='#/koordynator-remontow/terminy-i-dostawy'>Organizacji terminów i dostaw</a>, a komplet list znajdziesz w <a href='#/koordynator-remontow/checklisty'>Checklistach</a>." },
+      { t: "check", title: "Checklista odbioru prac", id: "odbior-checklist", items: [
+        "Zgodność wykonania z projektem i standardem.",
+        "Ściany i malowanie — równe, bez zacieków i przebarwień.",
+        "Płytki i fugi — równo, bez pustek, czyste fugi i silikon.",
+        "Podłogi, panele i listwy — bez uszkodzeń i szczelin.",
+        "Drzwi i okna — montaż, regulacja, brak rys.",
+        "Biały montaż i armatura — szczelność, brak przecieków.",
+        "Elektryka — gniazdka, włączniki, oświetlenie działające.",
+        "Stolarka — fronty, równe szczeliny, domyk.",
+        "Czystość po pracach.",
+        "Usterki spisane (zdjęcia w Nozbe) i poprawki ustalone z ekipą."
       ] }
     ]
   };
@@ -479,8 +584,8 @@ window.KB_CONTENT = (function () {
   A.pierwotny = {
     id: "rynek-pierwotny",
     title: "Rynek pierwotny",
-    summary: "Mieszkania od deweloperów — większość naszych inwestycji. Prąd budowlany, start prac w nowej inwestycji, odbiór od dewelopera.",
-    tags: ["rynek pierwotny", "deweloper", "prąd budowlany", "odbiór", "nowa inwestycja"],
+    summary: "Mieszkania od deweloperów — większość naszych inwestycji. Prąd budowlany i organizacja startu prac w nowej inwestycji.",
+    tags: ["rynek pierwotny", "deweloper", "prąd budowlany", "nowa inwestycja", "start"],
     updated: "2026-06-21",
     blocks: [
       { t: "lead", html: "Na obecnym etapie <strong>większość naszych inwestycji to rynek pierwotny</strong> — mieszkania kupowane od deweloperów. Stan deweloperski upraszcza część prac (instalacje są nowe), ale ma swoją specyfikę, którą trzeba znać." },
@@ -489,7 +594,7 @@ window.KB_CONTENT = (function () {
       { t: "ul", items: [
         "Mieszkanie w stanie deweloperskim — instalacje (elektryka, hydraulika) są nowe i zgodne z normami.",
         "Zwykle nie ma rozbiórek ani wymiany instalacji na pełną skalę.",
-        "Pojawiają się za to tematy charakterystyczne dla nowych inwestycji: prąd budowlany, organizacja startu, odbiór od dewelopera.",
+        "Pojawiają się za to tematy charakterystyczne dla nowych inwestycji: prąd budowlany i organizacja startu prac.",
         "Często pracujemy w budynku, w którym trwają jeszcze inne wykończenia."
       ] },
 
@@ -511,25 +616,11 @@ window.KB_CONTENT = (function () {
         { title: "Pierwsze materiały i kontener", html: "Zorganizuj start: materiały na pierwszy etap, kontener jeśli potrzebny." }
       ] },
 
-      { t: "h", text: "Odbiór mieszkania od dewelopera" },
-      { t: "p", html: "Odbiór to moment, w którym sprawdzamy jakość lokalu przekazanego przez dewelopera i spisujemy usterki do protokołu. Wychwycenie wad na tym etapie pozwala egzekwować ich naprawę od dewelopera." },
-      { t: "check", title: "Na co zwrócić uwagę przy odbiorze", id: "odbior-deweloper", items: [
-        "Ściany i sufity — piony, równość, pęknięcia.",
-        "Okna i drzwi balkonowe — otwieranie, szczelność, rysy.",
-        "Posadzki — równość, wylewki.",
-        "Instalacja elektryczna — liczba i rozmieszczenie punktów, licznik.",
-        "Instalacja wod-kan — przyłącza, brak przecieków.",
-        "Wentylacja — sprawność kratek wentylacyjnych.",
-        "Metraż i układ zgodny z umową.",
-        "Spisanie usterek do protokołu odbioru."
-      ] },
-      { t: "note", variant: "info", title: "Współpraca z flipperem przy odbiorze", html: "Zakres Twojego udziału w odbiorze ustal z flipperem — czasem odbiór prowadzi flipper, a Ty wspierasz organizacyjnie i przejmujesz lokal do prac." },
-
       { t: "h", text: "Najczęstsze błędy" },
       { t: "ul", items: [
         "Start prac bez potwierdzonego prądu budowlanego.",
         "Nieznajomość zasad dewelopera (godziny, transport) — konflikty na budowie.",
-        "Pominięcie usterek przy odbiorze — później trudniej je egzekwować."
+        "Brak ustaleń co do dostępu i mediów przed wejściem ekipy."
       ] },
       { t: "note", variant: "tip", html: "Na rynku pierwotnym najwięcej czasu oszczędza dobre przygotowanie startu. Im sprawniej ekipa wejdzie, tym szybciej skończy." }
     ]
@@ -539,7 +630,7 @@ window.KB_CONTENT = (function () {
     id: "rynek-wtorny",
     title: "Rynek wtórny",
     summary: "Mieszkania używane — proces jest inny i obejmuje dodatkowe etapy: wymianę instalacji elektrycznej, grzejników, kontakt ze spółdzielnią/wspólnotą.",
-    tags: ["rynek wtórny", "elektryka", "wlz", "grzejniki", "spółdzielnia", "wspólnota", "wodomierze"],
+    tags: ["rynek wtórny", "elektryka", "wlz", "grzejniki", "gaz", "indukcja", "spółdzielnia", "wspólnota", "wodomierze"],
     updated: "2026-06-21",
     blocks: [
       { t: "lead", html: "Rynek wtórny to mieszkania używane. Proces wygląda <strong>inaczej niż na rynku pierwotnym</strong> i obejmuje dodatkowe etapy, których nie ma w nowym budownictwie. Przygotuj się na więcej formalności i prac instalacyjnych." },
@@ -551,6 +642,7 @@ window.KB_CONTENT = (function () {
         ["Rozbiórki", "Zwykle brak", "Często — stare wykończenie do skucia"],
         ["Formalności", "Deweloper / zarządca", "Spółdzielnia lub wspólnota mieszkaniowa"],
         ["Prąd na czas prac", "Prąd budowlany", "Zwykle istniejąca instalacja"],
+        ["Gaz / kuchnia", "Zwykle brak tematu", "Zawsze odcięcie gazu (uprawniona osoba) + indukcja"],
         ["Niespodzianki", "Rzadziej", "Częściej (stan ukrytych instalacji)"]
       ] },
 
@@ -564,6 +656,10 @@ window.KB_CONTENT = (function () {
         "Sprawdź sposób zasilania (instalacja c.o.) i ewentualne formalności przy ingerencji w piony.",
         "Prace na pionach grzewczych mogą wymagać zgody/uzgodnienia ze spółdzielnią lub wspólnotą."
       ] },
+
+      { t: "h", text: "Odcięcie gazu i przejście na indukcję" },
+      { t: "p", html: "Na rynku wtórnym <strong>zawsze odcinamy gaz</strong> i przechodzimy na gotowanie indukcyjne (płyta indukcyjna)." },
+      { t: "note", variant: "warn", title: "Tylko uprawniona osoba", html: "Odcięcie gazu wykonuje <strong>specjalna, uprawniona osoba</strong> — nie robi tego ekipa wykończeniowa ani koordynator. Zaplanuj to z wyprzedzeniem; pamiętaj, że płyta indukcyjna wymaga odpowiedniego zasilania elektrycznego (uwzględnij to przy pracach elektrycznych)." },
 
       { t: "h", text: "Kontakt ze spółdzielnią lub wspólnotą" },
       { t: "p", html: "Na rynku wtórnym częścią pracy jest kontakt z administracją budynku. Niektóre prace wymagają zgłoszenia lub zgody." },
@@ -584,6 +680,7 @@ window.KB_CONTENT = (function () {
         "Oceniony zakres wymiany instalacji elektrycznej (czy WLZ).",
         "Zaplanowana wymiana grzejników (jeśli dotyczy).",
         "Ustalone ewentualne przeniesienie wodomierzy.",
+        "Zlecone odcięcie gazu (uprawniona osoba) i zaplanowana indukcja.",
         "Zorganizowany kontener na odpady (rozbiórka).",
         "Potwierdzony dostęp do lokalu i zasady transportu w budynku.",
         "Zakres dodatkowych prac potwierdzony z flipperem."
@@ -598,7 +695,7 @@ window.KB_CONTENT = (function () {
     id: "dostawcy",
     title: "Dostawcy i miejsca zakupów",
     summary: "Skąd najczęściej zamawiamy materiały i wyposażenie — katalog dostawców z zakresem i kanałem zamawiania.",
-    tags: ["dostawcy", "leroy merlin", "mexen", "nexterio", "benmar", "stolarze", "szklarze", "armatura", "płytki", "panele"],
+    tags: ["dostawcy", "leroy merlin", "mexen", "nexterio", "benmar", "allegro", "led-lux", "stolarze", "szklarze", "armatura", "płytki", "panele", "oświetlenie", "sztukateria"],
     updated: "2026-06-21",
     blocks: [
       { t: "lead", html: "To Twój podręczny katalog dostawców. Większość zamówień składasz w kilku stałych miejscach — dzięki temu wiesz, gdzie po co sięgnąć." },
@@ -609,7 +706,9 @@ window.KB_CONTENT = (function () {
         { icon: "store", title: "Nexterio", tag: "Płytki", html: "Płytki. Zamówienie kompletujesz na stronie, płatność przelewem tradycyjnym." },
         { icon: "truck", title: "Benmar", tag: "Materiały + dostawa", html: "Materiały budowlane wraz z organizacją dostawy na inwestycję." },
         { icon: "hardhat", title: "Stolarze", tag: "Kuchnie / zabudowy", html: "Kuchnie oraz zabudowy stałe wykonywane na wymiar." },
-        { icon: "image", title: "Szklarze", tag: "Lustra", html: "Lustra łazienkowe wykonywane na wymiar." }
+        { icon: "image", title: "Szklarze", tag: "Lustra", html: "Lustra łazienkowe wykonywane na wymiar." },
+        { icon: "store", title: "Allegro", tag: "Sztukateria / lustra / oświetlenie", html: "Sztukateria, listwy, gotowe lustra, oświetlenie i drobne wyposażenie." },
+        { icon: "bolt", title: "Led-Lux", tag: "Oświetlenie", html: "Wyspecjalizowany dostawca oświetlenia." }
       ] },
 
       { t: "h", text: "Katalog — co, gdzie i jak" },
@@ -617,18 +716,16 @@ window.KB_CONTENT = (function () {
         ["Leroy Merlin", "Materiały budowlane, wyposażenie, panele", "Mail do Magdy (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
         ["Mexen", "Armatura", "Platforma B2B", "Przelew tradycyjny — screenshot do flippera"],
         ["Nexterio", "Płytki", "Strona internetowa", "Przelew tradycyjny — screenshot do flippera"],
+        ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Strona Allegro", "Przelew tradycyjny — screenshot do flippera"],
+        ["Led-Lux", "Oświetlenie", "Zamówienie u dostawcy", "Przelew tradycyjny — screenshot do flippera"],
         ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],
         ["Stolarze", "Kuchnie, zabudowy stałe", "Pomiar + zamówienie indywidualne", "Wg ustaleń z flipperem"],
         ["Szklarze", "Lustra łazienkowe na wymiar", "Pomiar + zamówienie indywidualne", "Wg ustaleń z flipperem"]
       ] },
-      { t: "note", variant: "info", title: "Procedury zamówień", html: "Dokładne kroki dla Leroy Merlin, Benmar, Nexterio i Mexen znajdziesz w artykule <a href='#/koordynator-remontow/zamawianie-materialow'>Zamawianie materiałów</a>." },
+      { t: "note", variant: "info", title: "Procedury zamówień", html: "Dokładne kroki dla Leroy Merlin, Benmar, Nexterio, Mexen, Allegro i Led-Lux znajdziesz w artykule <a href='#/koordynator-remontow/zamawianie-materialow'>Zamawianie materiałów</a>." },
 
       { t: "h", text: "Kontakty" },
-      { t: "p", html: "Aktualne dane kontaktowe (osoby, telefony, loginy B2B) trzymamy w bezpiecznym miejscu na Dysku Google. Podlinkuj je tutaj, aby mieć wszystko pod ręką:" },
-      { t: "links", items: [
-        { label: "Kontakty do dostawców (Dysk Google)", href: "#", note: "Uzupełnij link", external: true },
-        { label: "Dane logowania B2B (Mexen)", href: "#", note: "Uzupełnij link", external: true }
-      ] },
+      { t: "p", html: "Dane kontaktowe i dostępy do dostawców (osoby, telefony, loginy B2B — np. kontakt do Magdy w Leroy Merlin czy konto B2B Mexen) <strong>uzyskasz od flippera</strong>. Jeśli czegoś brakuje — poproś o kontakt przed złożeniem zamówienia." },
       { t: "note", variant: "tip", html: "Gdy znajdziesz nowego, dobrego dostawcę (np. lepsza cena lub krótszy termin) — zaproponuj go flipperowi i dopisz do tego katalogu." }
     ]
   };
@@ -636,32 +733,41 @@ window.KB_CONTENT = (function () {
   A.narzedzia = {
     id: "narzedzia",
     title: "Narzędzia pracy",
-    summary: "Trzy narzędzia, których używasz codziennie: Dysk Google (dokumenty), WhatsApp (komunikacja), Arkusze Google (koszty).",
-    tags: ["narzędzia", "google drive", "dysk", "whatsapp", "arkusze google", "budżet", "koszty"],
+    summary: "Narzędzia, których używasz codziennie: Nozbe (raporty i zdjęcia), Dysk Google (dokumenty), WhatsApp (komunikacja), Arkusze Google (koszty).",
+    tags: ["narzędzia", "nozbe", "google drive", "dysk", "whatsapp", "arkusze google", "budżet", "koszty", "raporty"],
     updated: "2026-06-21",
     blocks: [
-      { t: "lead", html: "Cała Twoja codzienna praca opiera się na trzech narzędziach. Opanuj je od pierwszego dnia — to one trzymają porządek przy kilku remontach naraz." },
+      { t: "lead", html: "Cała Twoja codzienna praca opiera się na kilku narzędziach. Opanuj je od pierwszego dnia — to one trzymają porządek przy kilku remontach naraz." },
 
       { t: "cards", items: [
-        { icon: "file", title: "Dysk Google", tag: "Dokumenty", html: "Przechowywanie dokumentów, umów i faktur." },
+        { icon: "clipboard", title: "Nozbe", tag: "Raporty / zdjęcia", html: "Raportowanie i zarządzanie flipami. Tu trafiają zdjęcia z remontów." },
+        { icon: "file", title: "Dysk Google", tag: "Dokumenty", html: "Dokumenty, umowy i faktury." },
         { icon: "phone", title: "WhatsApp", tag: "Komunikacja", html: "Komunikacja z ekipami oraz zespołem." },
-        { icon: "clipboard", title: "Arkusze Google", tag: "Koszty", html: "Kontrola kosztów i budżetów remontów." }
+        { icon: "book", title: "Arkusze Google", tag: "Koszty", html: "Kontrola kosztów i budżetów remontów." }
       ] },
+
+      { t: "h", text: "Nozbe" },
+      { t: "ul", items: [
+        "Główne narzędzie do <strong>raportowania i zarządzania flipami</strong>.",
+        "Tu trafiają <strong>zdjęcia z remontów</strong> oraz raporty z wizyt — nie na Dysk Google.",
+        "Zadania i postęp prac prowadzimy w Nozbe, dzięki czemu flipper ma wszystko w jednym miejscu."
+      ] },
+      { t: "note", variant: "info", title: "Zapamiętaj podział", html: "Zdjęcia i raporty z remontów → <strong>Nozbe</strong>. Dokumenty, umowy i faktury → <strong>Dysk Google</strong>." },
 
       { t: "h", text: "Dysk Google" },
       { t: "ul", items: [
-        "Tu trzymamy dokumenty, umowy, faktury oraz dokumentację zdjęciową.",
+        "Tu trzymamy dokumenty, umowy i faktury (zdjęcia z remontów trafiają do Nozbe).",
         "Utrzymuj <strong>jeden folder na inwestycję</strong> z czytelną nazwą (adres).",
-        "Proponowana struktura podfolderów: <code>Umowy</code>, <code>Faktury</code>, <code>Zdjęcia / Raporty</code>, <code>Materiały (listy)</code>, <code>Dokumenty (odbiory, zgody)</code>."
+        "Proponowana struktura podfolderów: <code>Umowy</code>, <code>Faktury</code>, <code>Materiały (listy)</code>, <code>Dokumenty (zgody, pisma)</code>."
       ] },
       { t: "note", variant: "info", title: "Porządek = spokój", html: "Spójne nazewnictwo folderów sprawia, że każdy plik znajdziesz w kilka sekund — i że flipper też się w tym odnajdzie." },
 
       { t: "h", text: "WhatsApp" },
       { t: "ul", items: [
         "Podstawowy kanał kontaktu z ekipami i zespołem.",
-        "Sugerowane: osobny wątek/grupa na inwestycję, żeby ustalenia i zdjęcia się nie mieszały.",
+        "Sugerowane: osobny wątek/grupa na inwestycję, żeby ustalenia się nie mieszały.",
         "Szybkie, konkretne odpowiedzi; ważne ustalenia potwierdzaj na piśmie.",
-        "Zdjęcia z wizyt wysyłaj flipperowi i archiwizuj na Dysku."
+        "Zdjęcia z wizyt dodawaj do <strong>Nozbe</strong> (raport); WhatsApp służy do bieżącej komunikacji."
       ] },
 
       { t: "h", text: "Arkusze Google" },
@@ -674,6 +780,7 @@ window.KB_CONTENT = (function () {
 
       { t: "h", text: "Konfiguracja na start" },
       { t: "check", title: "Onboarding — dzień 1", id: "onboarding-narzedzia", items: [
+        "Dostęp do Nozbe (raporty i zdjęcia z remontów).",
         "Dostęp do Dysku Google (foldery inwestycji).",
         "Zainstalowany WhatsApp + dodane kontakty zespołu i ekip.",
         "Dostęp do Arkuszy Google z budżetami remontów.",
@@ -698,12 +805,15 @@ window.KB_CONTENT = (function () {
         { q: "Czy mogę samodzielnie podpisać umowę z ekipą?", html: "Umowę zawieramy na <strong>wzorze dostarczonym przez flippera</strong>, po akceptacji warunków (zakres, termin, cena). Nie tworzysz własnych umów." },
         { q: "Szukamy osobno elektryków i hydraulików?", html: "Nie — szukamy <strong>ekip kompleksowych</strong> (wykończenie + elektryka + hydraulika). Osobnych fachowców angażujemy wyjątkowo, np. WLZ na rynku wtórnym czy przeniesienie wodomierzy." },
         { q: "Co, jeśli ekipa nie dotrzymuje terminu?", html: "Ustal przyczynę, zaktualizuj harmonogram i poinformuj flippera. Opóźnienia dokumentuj; przy powtarzających się problemach eskaluj." },
-        { q: "Gdzie szukać ekip remontowych?", html: "Na <strong>OLX</strong>, <strong>Fixly</strong> i <strong>Facebooku</strong> (grupy / Spotted). Szczegóły i wzory ogłoszeń w artykule Rekrutacja ekip." },
+        { q: "Gdzie szukać ekip remontowych?", html: "Na <strong>OLX</strong>, <strong>Fixly</strong> i <strong>Facebooku</strong> (grupy / Spotted). Szczegóły i wzory ogłoszeń w artykule <a href='#/koordynator-remontow/rekrutacja-ekip'>Rekrutacja ekip</a>." },
         { q: "Jak wygląda prąd na nowej inwestycji?", html: "Na rynku pierwotnym zwykle korzystamy z <strong>prądu budowlanego</strong> do czasu docelowego podłączenia. Potwierdź jego dostępność przed startem prac." },
-        { q: "Czym różni się rynek wtórny od pierwotnego?", html: "Wtórny obejmuje dodatkowe etapy: wymianę instalacji elektrycznej (czasem WLZ), wymianę grzejników, kontakt ze spółdzielnią/wspólnotą i więcej formalności. Pełne porównanie w artykule Rynek wtórny." },
-        { q: "Gdzie trzymam dokumenty i zdjęcia?", html: "Na <strong>Dysku Google</strong> — jeden folder na inwestycję (umowy, faktury, zdjęcia, listy materiałów). Komunikacja na WhatsApp, koszty w Arkuszach Google." },
-        { q: "Co muszę sprawdzić przy odbiorze od dewelopera?", html: "Ściany, okna, posadzki, instalacje, wentylację, zgodność metrażu — i spisać usterki do protokołu. Lista w artykule Rynek pierwotny." },
+        { q: "Czym różni się rynek wtórny od pierwotnego?", html: "Wtórny obejmuje dodatkowe etapy: wymianę instalacji elektrycznej (czasem WLZ), wymianę grzejników, odcięcie gazu i przejście na indukcję, kontakt ze spółdzielnią/wspólnotą i więcej formalności. Pełne porównanie w artykule <a href='#/koordynator-remontow/rynek-wtorny'>Rynek wtórny</a>." },
+        { q: "Gdzie trzymam dokumenty, zdjęcia i raporty?", html: "Zdjęcia i raporty z remontów → <strong>Nozbe</strong>. Dokumenty, umowy i faktury → <strong>Dysk Google</strong> (jeden folder na inwestycję). Komunikacja → WhatsApp, koszty → Arkusze Google. Patrz <a href='#/koordynator-remontow/narzedzia'>Narzędzia</a>." },
+        { q: "Co sprawdzić przy odbiorze prac od ekipy?", html: "Zgodność ze standardem i projektem oraz jakość wykończenia (ściany, płytki/fugi, panele/listwy, biały montaż, elektryka, stolarka), a usterki spisz i wyegzekwuj poprawki. Pełna lista w artykule <a href='#/koordynator-remontow/odbior-prac'>Odbiór wykończonego lokalu</a>. Odbioru mieszkania od dewelopera koordynator nie prowadzi." },
         { q: "Ekipa proponuje zmianę zakresu prac — mogę się zgodzić?", html: "Nie samodzielnie. Każda zmiana zakresu, standardu lub budżetu wymaga <strong>zgody flippera</strong>." },
+        { q: "Kto decyduje o wykończeniu (panele, płytki, kolory)?", html: "Decyduje <strong>flipper</strong> i przekazuje Ci wytyczne: panele, płytki, kolory ścian, kolory frontów zabudów stolarskich, armatura itd. Gdy czegoś brakuje — dopytaj, zanim zamówisz. Patrz <a href='#/koordynator-remontow/co-robimy-czego-nie'>Co robimy / czego nie robimy</a>." },
+        { q: "Ekipa ma pytanie techniczne do projektu — co robić?", html: "Za projekt i rysunki odpowiada flipper. Pytania, na które nie znasz odpowiedzi, ekipa może kierować do <strong>architekta</strong> (kontakt udostępnia flipper)." },
+        { q: "Trzeba coś przewieźć albo wywieźć z remontu?", html: "Masz do dyspozycji <strong>pomocnika z busem</strong> — wywóz odpadów, transport większych rzeczy od dostawcy, zwroty pozostałości. Szczegóły w <a href='#/koordynator-remontow/terminy-i-dostawy'>Organizacji terminów i dostaw</a>." },
         { q: "Jak zgłaszać poprawki / reklamacje?", html: "Wskazuj ekipie poprawki w ramach umowy i dokumentuj je zdjęciami. Przy sytuacjach spornych skonsultuj z flipperem." }
       ] },
       { t: "note", variant: "tip", title: "Nie ma Twojego pytania?", html: "Skorzystaj z wyszukiwarki (<span class='kbd'>⌘K</span>). Jeśli nadal brak odpowiedzi — zapytaj flippera, a pytanie warto potem dopisać do tego FAQ." }
@@ -723,6 +833,7 @@ window.KB_CONTENT = (function () {
       { t: "check", title: "Uruchomienie inwestycji", id: "cl-start", items: [
         "Otrzymany adres, zakres, standard i termin od flippera.",
         "Założony folder inwestycji na Dysku Google.",
+        "Inwestycja założona w Nozbe (raporty i zdjęcia).",
         "Założony arkusz kosztów dla inwestycji.",
         "Ustalony dostęp do lokalu (klucze / karty).",
         "Potwierdzone media (prąd budowlany na rynku pierwotnym).",
@@ -758,19 +869,21 @@ window.KB_CONTENT = (function () {
         "Status względem harmonogramu.",
         "Spisane problemy / ryzyka.",
         "Potrzeby ekipy na kolejny tydzień.",
-        "Raport wysłany flipperowi.",
-        "Zdjęcia w folderze inwestycji na Dysku."
+        "Raport ze zdjęciami dodany do Nozbe.",
+        "W razie potrzeby flipper poinformowany."
       ] },
 
-      { t: "h", text: "Odbiór od dewelopera (rynek pierwotny)" },
-      { t: "check", title: "Odbiór lokalu", id: "cl-odbior", items: [
-        "Ściany, sufity, posadzki sprawdzone.",
-        "Okna i drzwi balkonowe sprawdzone.",
-        "Instalacja elektryczna i licznik sprawdzone.",
-        "Instalacja wod-kan sprawdzona.",
-        "Wentylacja sprawdzona.",
-        "Metraż i układ zgodny z umową.",
-        "Usterki spisane do protokołu."
+      { t: "h", text: "Odbiór wykończonego lokalu (prace ekipy)" },
+      { t: "check", title: "Odbiór prac od ekipy", id: "cl-odbior-prac", items: [
+        "Zgodność wykonania z projektem i standardem.",
+        "Ściany i malowanie — równe, bez zacieków i przebarwień.",
+        "Płytki i fugi — równo, bez pustek, czyste fugi i silikon.",
+        "Podłogi, panele i listwy — bez uszkodzeń i szczelin.",
+        "Drzwi, okna, biały montaż i armatura — sprawne i szczelne.",
+        "Elektryka — gniazdka, włączniki, oświetlenie działające.",
+        "Stolarka — fronty, równe szczeliny, domyk.",
+        "Czystość po pracach; usterki spisane (zdjęcia w Nozbe).",
+        "Poprawki ustalone z ekipą w ramach umowy."
       ] },
 
       { t: "h", text: "Start na rynku wtórnym" },
@@ -779,6 +892,7 @@ window.KB_CONTENT = (function () {
         "Sprawdzone wymagane zgłoszenia / zgody.",
         "Oceniony zakres wymiany elektryki (czy WLZ).",
         "Zaplanowana wymiana grzejników (jeśli dotyczy).",
+        "Zlecone odcięcie gazu (uprawniona osoba) i zaplanowana indukcja.",
         "Ustalone ewentualne przeniesienie wodomierzy.",
         "Kontener na odpady zamówiony.",
         "Zakres dodatkowych prac potwierdzony z flipperem."
@@ -786,12 +900,13 @@ window.KB_CONTENT = (function () {
 
       { t: "h", text: "Zakończenie i przekazanie do sprzedaży" },
       { t: "check", title: "Finisz inwestycji", id: "cl-finisz", items: [
-        "Prace odebrane zgodnie ze standardem.",
+        "Prace odebrane zgodnie ze standardem (odbiór prac od ekipy).",
         "Poprawki / usterki wyegzekwowane od ekipy.",
         "Montaż kuchni, zabudów i luster zakończony.",
         "Sprzątanie poremontowe wykonane.",
+        "Homestaging wykonany przed sesją.",
         "Sesja zdjęciowa zrealizowana.",
-        "Dokumenty i faktury kompletne na Dysku.",
+        "Dokumenty i faktury kompletne na Dysku; raporty i zdjęcia w Nozbe.",
         "Arkusz kosztów zamknięty i zaktualizowany.",
         "Mieszkanie gotowe do przekazania do sprzedaży."
       ] }
@@ -805,7 +920,7 @@ window.KB_CONTENT = (function () {
     desc: "Kompletny przewodnik wdrożeniowy: ekipy, materiały, nadzór, rynek pierwotny i wtórny, dostawcy i narzędzia.",
     groups: [
       { label: "Start", items: [A.wprowadzenie, A.zakres, A.coRobimy, A.standardy] },
-      { label: "Procesy operacyjne", items: [A.rekrutacja, A.materialy, A.nadzor, A.terminy] },
+      { label: "Procesy operacyjne", items: [A.rekrutacja, A.materialy, A.nadzor, A.terminy, A.odbior] },
       { label: "Rodzaje inwestycji", items: [A.pierwotny, A.wtorny] },
       { label: "Zasoby i referencje", items: [A.dostawcy, A.narzedzia, A.faq, A.checklisty] }
     ]
