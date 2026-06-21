@@ -1,0 +1,17 @@
+# Zależności / artefakty (nie wypychamy do repo)
+node_modules/
+package.json
+package-lock.json
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Edytory
+.vscode/
+.idea/
+*.swp
+
+# Paczki dystrybucyjne (opcjonalnie — to tylko zrzut projektu)
+TRBK-Baza-Wiedzy-projekt.zip
