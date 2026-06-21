@@ -508,8 +508,8 @@
     $all("[data-anchor]").forEach(function (anchor) {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        var url = location.href.split("#")[0] + "#/" + roleId + "/" + artId;
-        copyText(url).then(function () { showToast("Link skopiowany"); })
+        var url = location.href.split("#")[0] + "#/" + roleId + "/" + artId + "#" + anchor.getAttribute("data-anchor");
+        copyText(url).then(function () { showToast("Link do sekcji skopiowany"); })
                      .catch(function () { showToast("Nie udało się skopiować"); });
       });
     });
@@ -684,6 +684,18 @@
     var parts = h.split("/").filter(Boolean);
     return parts;
   }
+  function sectionFromHash() {
+    // Format linku do sekcji: #/rola/artykul#idSekcji
+    var parts = (location.hash || "").split("#"); // ["", "/rola/artykul", "idSekcji"?]
+    return parts.length > 2 ? decodeURIComponent(parts[2]) : "";
+  }
+  function scrollToSection(id) {
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    // renderArticle przewinął na górę — teraz skacz do sekcji (offset: scroll-margin-top).
+    try { el.scrollIntoView({ block: "start" }); } catch (e) { el.scrollIntoView(); }
+  }
   function route() {
     var parts = parseHash();
     if (parts.length === 0) return renderHome();
@@ -702,6 +714,7 @@
     if (roleEl) { roleEl.setAttribute("data-open", "true"); var hd = $(".nav-role__head", roleEl); if (hd) hd.setAttribute("aria-expanded", "true"); }
     renderArticle(ctx);
     closeMobileNav();
+    scrollToSection(sectionFromHash());
   }
   function go(href) { if (location.hash === href) route(); else location.hash = href; }
 

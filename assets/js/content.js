@@ -374,7 +374,7 @@ window.KB_CONTENT = (function () {
       { t: "h", text: "Skrót: dostawca → metoda → kto płaci" },
       { t: "table", head: ["Dostawca", "Co zamawiamy", "Jak składamy", "Płatność"], rows: [
         ["Leroy Merlin", "Materiały, wyposażenie, panele", "Mailowo do opiekuna (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
-        ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],
+        ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Otwarty rachunek"],
         ["Nexterio", "Płytki", "Koszyk na stronie, przelew tradycyjny", "Screenshot → flipper opłaca"],
         ["Mexen", "Armatura", "Platforma B2B, przelew tradycyjny", "Screenshot → flipper opłaca"],
         ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Koszyk na Allegro, przelew tradycyjny", "Screenshot → flipper opłaca"],
@@ -717,7 +717,7 @@ window.KB_CONTENT = (function () {
         ["Leroy Merlin", "Materiały budowlane, wyposażenie, panele", "Mail do opiekuna (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
         ["Mexen", "Armatura", "Platforma B2B", "Przelew tradycyjny — screenshot do flippera"],
         ["Nexterio", "Płytki", "Strona internetowa", "Przelew tradycyjny — screenshot do flippera"],
-        ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Strona Allegro", "Przelew tradycyjny — screenshot do flippera"],
+        ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Strona Allegro", "Wg ustaleń z flipperem"],
         ["Led-Lux", "Oświetlenie", "Zamówienie u dostawcy", "Przelew tradycyjny — screenshot do flippera"],
         ["Media Expert", "AGD (montaż: stolarze)", "Zamówienie u dostawcy", "Wg ustaleń z flipperem"],
         ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],

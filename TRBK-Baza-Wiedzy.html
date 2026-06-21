@@ -172,13 +172,10 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--sidebar-bg);
   border-right: 1px solid var(--border);
   display: flex; flex-direction: column;
-  position: sticky; top: 0; height: 100vh;
+  /* Stały, niełamliwy układ — pozycja fixed eliminuje migotanie sticky
+     przy przewijaniu (kolumna 1 gridu rezerwuje miejsce). */
+  position: fixed; top: 0; left: 0; width: var(--sidebar-w); height: 100vh;
   z-index: 60;
-  /* Stała warstwa kompozytowa — zapobiega migotaniu przy przewijaniu
-     (repaint wywoływany przez backdrop-filter w topbarze). */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  will-change: transform;
 }
 .sidebar__brand {
   display: flex; align-items: center; gap: 11px;
@@ -288,9 +285,8 @@ button { font-family: inherit; cursor: pointer; }
   position: sticky; top: 0; z-index: 40;
   display: flex; align-items: center; gap: 12px;
   padding: 11px 22px;
-  background: color-mix(in srgb, var(--bg) 86%, transparent);
-  backdrop-filter: saturate(180%) blur(10px);
-  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  /* Solidne tło zamiast backdrop-filter — eliminuje repaint/migotanie przy scrollu. */
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 .topbar__crumbs { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-3); min-width: 0; }
@@ -342,7 +338,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 12.5px; color: var(--text-3);
 }
 .article__meta .m { display: inline-flex; align-items: center; gap: 6px; }
-.tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; flex-basis: 100%; margin-bottom: 2px; }
 .tag {
   font-size: 11.5px; font-weight: 550; color: var(--text-2);
   background: var(--surface); border: 1px solid var(--border);
@@ -495,10 +491,10 @@ table.tbl tbody tr:hover { background: var(--hover); }
   transition: border-color .15s, box-shadow .15s, transform .15s;
 }
 .card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
-.card__top { display: grid; grid-template-columns: auto 1fr; column-gap: 11px; row-gap: 7px; margin-bottom: 10px; }
+.card__top { display: grid; grid-template-columns: auto 1fr; column-gap: 11px; row-gap: 4px; margin-bottom: 11px; }
 .card__ic { grid-column: 1; grid-row: 1; width: 32px; height: 32px; border-radius: 8px; background: var(--surface-2); color: var(--text-2); display: grid; place-items: center; flex-shrink: 0; }
 .card__title { grid-column: 2; grid-row: 1; align-self: center; font-weight: 650; font-size: 14.5px; line-height: 1.3; }
-.card__tag { grid-column: 2; grid-row: 2; justify-self: start; font-size: 10.5px; font-weight: 600; color: var(--text-2); background: var(--surface); padding: 3px 9px; border-radius: 7px; border: 1px solid var(--border); line-height: 1.35; }
+.card__tag { grid-column: 2; grid-row: 2; justify-self: start; font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-3); line-height: 1.5; }
 .card__body { font-size: 13.3px; color: var(--text-2); line-height: 1.55; }
 .card__body a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
 
@@ -1158,7 +1154,7 @@ window.KB_CONTENT = (function () {
       { t: "h", text: "Skrót: dostawca → metoda → kto płaci" },
       { t: "table", head: ["Dostawca", "Co zamawiamy", "Jak składamy", "Płatność"], rows: [
         ["Leroy Merlin", "Materiały, wyposażenie, panele", "Mailowo do opiekuna (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
-        ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],
+        ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Otwarty rachunek"],
         ["Nexterio", "Płytki", "Koszyk na stronie, przelew tradycyjny", "Screenshot → flipper opłaca"],
         ["Mexen", "Armatura", "Platforma B2B, przelew tradycyjny", "Screenshot → flipper opłaca"],
         ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Koszyk na Allegro, przelew tradycyjny", "Screenshot → flipper opłaca"],
@@ -1501,7 +1497,7 @@ window.KB_CONTENT = (function () {
         ["Leroy Merlin", "Materiały budowlane, wyposażenie, panele", "Mail do opiekuna (adres + termin)", "Flipper opłaca przygotowane zamówienie"],
         ["Mexen", "Armatura", "Platforma B2B", "Przelew tradycyjny — screenshot do flippera"],
         ["Nexterio", "Płytki", "Strona internetowa", "Przelew tradycyjny — screenshot do flippera"],
-        ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Strona Allegro", "Przelew tradycyjny — screenshot do flippera"],
+        ["Allegro", "Sztukateria, listwy, gotowe lustra, oświetlenie", "Strona Allegro", "Wg ustaleń z flipperem"],
         ["Led-Lux", "Oświetlenie", "Zamówienie u dostawcy", "Przelew tradycyjny — screenshot do flippera"],
         ["Media Expert", "AGD (montaż: stolarze)", "Zamówienie u dostawcy", "Wg ustaleń z flipperem"],
         ["Benmar", "Materiały budowlane + dostawa", "Adres + tel. wykonawcy + lista", "Po stronie zamówienia Benmar"],
@@ -2255,8 +2251,8 @@ window.KB_CONTENT = (function () {
     $all("[data-anchor]").forEach(function (anchor) {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        var url = location.href.split("#")[0] + "#/" + roleId + "/" + artId;
-        copyText(url).then(function () { showToast("Link skopiowany"); })
+        var url = location.href.split("#")[0] + "#/" + roleId + "/" + artId + "#" + anchor.getAttribute("data-anchor");
+        copyText(url).then(function () { showToast("Link do sekcji skopiowany"); })
                      .catch(function () { showToast("Nie udało się skopiować"); });
       });
     });
@@ -2431,6 +2427,18 @@ window.KB_CONTENT = (function () {
     var parts = h.split("/").filter(Boolean);
     return parts;
   }
+  function sectionFromHash() {
+    // Format linku do sekcji: #/rola/artykul#idSekcji
+    var parts = (location.hash || "").split("#"); // ["", "/rola/artykul", "idSekcji"?]
+    return parts.length > 2 ? decodeURIComponent(parts[2]) : "";
+  }
+  function scrollToSection(id) {
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    // renderArticle przewinął na górę — teraz skacz do sekcji (offset: scroll-margin-top).
+    try { el.scrollIntoView({ block: "start" }); } catch (e) { el.scrollIntoView(); }
+  }
   function route() {
     var parts = parseHash();
     if (parts.length === 0) return renderHome();
@@ -2449,6 +2457,7 @@ window.KB_CONTENT = (function () {
     if (roleEl) { roleEl.setAttribute("data-open", "true"); var hd = $(".nav-role__head", roleEl); if (hd) hd.setAttribute("aria-expanded", "true"); }
     renderArticle(ctx);
     closeMobileNav();
+    scrollToSection(sectionFromHash());
   }
   function go(href) { if (location.hash === href) route(); else location.hash = href; }
 
