@@ -1066,15 +1066,13 @@ window.KB_CONTENT = (function () {
         "Czy ekipa wykonuje kompleksowo wykończenie wraz z elektryką i hydrauliką?",
         "Ile osób liczy ekipa i ile zleceń prowadzą Państwo obecnie równolegle?",
         "W jakim terminie możecie zacząć i ile potrwa realizacja takiego metrażu?",
-        "Co dokładnie obejmuje wycena, a co jest poza nią (np. materiały, wywóz odpadów)?",
         "Czy mogę zobaczyć zdjęcia ostatnich realizacji o podobnym standardzie?",
-        "Jak wygląda płatność - etapy/transze przy określonym postępie prac?",
-        "Czy podpiszą Państwo umowę na naszym wzorze?"
       ] },
-      { t: "note", variant: "info", title: "Przykładowy fragment rozmowy", html: "<strong>Ty:</strong> Dzień dobry, prowadzę remont mieszkania w stanie deweloperskim, ok. [metraż] m², prosty standard - pełne wykończenie z elektryką i hydrauliką. Materiały i projekt zapewniamy my. Czy to zakres, który Państwo robią?<br><strong>Wykonawca:</strong> Tak, robimy kompleksowo.<br><strong>Ty:</strong> Świetnie. Prowadzą Państwo działalność i wystawiają fakturę VAT?<br><strong>Wykonawca:</strong> Tak.<br><strong>Ty:</strong> To jaki termin startu i ile zajmie taki metraż? I co obejmuje wycena? Poproszę też o kilka zdjęć ostatnich realizacji. Umowę podpisujemy na naszym wzorze." },
+      { t: "note", variant: "info", title: "Przykładowy fragment rozmowy", html: "<strong>Ty:</strong> Cześć, szukam ekipy, która wykona remont mieszkania w stanie deweloperskim, ok. [metraż] m², prosty standard. Zapewniam materiały, projekty są gotowe. Czy macie wolny termin na [miesiąc]?<br><strong>Wykonawca:</strong> Tak, możemy zacząć od drugiego tygodnia.<br><strong>Ty:</strong> Świetnie. Prowadzą Państwo działalność i wystawiają fakturę VAT?<br><strong>Wykonawca:</strong> Tak.<br><strong>Ty:</strong> W jakim czasie jesteście w stanie wykonać remont i w jakiej cenie?<br><strong>Wykonawca:</strong> Orientacyjnie około 6 tygodni; dokładną wycenę prześlę po obejrzeniu lokalu.<br><strong>Ty:</strong> Jasne. Rozliczamy się albo etapami (przy ustalonym postępie prac), albo na koniec remontu - jak Państwu wygodniej. Umowę przygotowujemy my; jeśli będziecie chcieli nanieść zmiany w zapisach, jesteśmy otwarci na ustalenia.<br><strong>Wykonawca:</strong> Pasuje. Prześlijcie umowę do wglądu i umówmy oględziny na miejscu.<br><strong>Ty:</strong> Super - wysyłam wzór i proponuję termin na inwestycji. Do zobaczenia." },
 
       { t: "h", text: "Umowa z ekipą" },
-      { t: "p", html: "Umowę zawsze zawieramy na <strong>gotowym wzorze, który dostarcza flipper</strong>. Nie tworzysz własnych umów ani nie zlecasz prac „na słowo”." },
+      { t: "p", html: "Umowę zawsze zawieramy na <strong>gotowym wzorze, który dostarcza flipper</strong>. Nie tworzysz własnych umów ani nie zlecasz prac „na słowo”. To my dostarczamy umowę; jeśli wykonawca chce zmian w zapisach, można je ustalić (w razie potrzeby skonsultuj z flipperem)." },
+      { t: "note", variant: "info", title: "Rozliczenie", html: "Model rozliczenia komunikujemy my - albo <strong>etapami</strong> (przy ustalonym postępie prac), albo <strong>na koniec remontu</strong>. Który wariant stosujemy na danej inwestycji, ustal z flipperem." },
       { t: "note", variant: "danger", title: "Zasada bezwzględna", html: "Żadne prace nie ruszają bez podpisanej umowy. To chroni i nas, i ekipę." },
       { t: "files", items: [
         { name: "Wzór umowy z ekipą remontową", type: "PDF", note: "Udostępnia flipper" }
@@ -1610,7 +1608,7 @@ window.KB_CONTENT = (function () {
 
       { t: "h", text: "Kontakty" },
       { t: "p", html: "Dane kontaktowe i dostępy do dostawców (osoby, telefony, loginy B2B - np. kontakt do opiekuna w Leroy Merlin czy konto B2B Mexen) <strong>uzyskasz od flippera</strong>. Jeśli czegoś brakuje - poproś o kontakt przed złożeniem zamówienia." },
-      { t: "note", variant: "tip", html: "Gdy znajdziesz nowego, dobrego dostawcę (np. lepsza cena lub krótszy termin) - zaproponuj go flipperowi i dopisz do tego katalogu." }
+      { t: "note", variant: "tip", html: "Gdy znajdziesz nowego, dobrego dostawcę (np. lepsza cena lub krótszy termin) - zaproponuj go flipperowi." }
     ]
   };
 
@@ -1632,8 +1630,8 @@ window.KB_CONTENT = (function () {
         ["Złota rączka", "[do uzupełnienia]", "[telefon]", "Drobne naprawy"],
         ["Sprzątaczka", "[do uzupełnienia]", "[telefon]", "Sprzątanie poremontowe"],
         ["Spawacz", "[do uzupełnienia]", "[telefon]", "Balustrady / metal"],
-        ["Elektryk (wyjątkowo)", "[do uzupełnienia]", "[telefon]", "WLZ - rynek wtórny"],
-        ["Hydraulik (wyjątkowo)", "[do uzupełnienia]", "[telefon]", "Przeniesienie wodomierzy"]
+        ["Elektryk", "[do uzupełnienia]", "[telefon]", "WLZ - rynek wtórny"],
+        ["Hydraulik", "[do uzupełnienia]", "[telefon]", "Przeniesienie wodomierzy"]
       ] },
 
       { t: "h", text: "Dostawcy" },
@@ -1656,6 +1654,7 @@ window.KB_CONTENT = (function () {
         ["Flipper", "[do uzupełnienia]", "[telefon]", "Decyzje i płatności"],
         ["Architekt", "[do uzupełnienia]", "[telefon]", "Pytania do projektu"]
       ] },
+      { t: "note", variant: "tip", html: "Aktualizuj spis od razu po zmianie numeru lub zrekrutowaniu nowego wykonawcy - to Twoja najszybsza ściąga w terenie." }
     ]
   };
 
