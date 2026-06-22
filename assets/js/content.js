@@ -286,12 +286,9 @@ window.KB_CONTENT = (function () {
         "Czy ekipa wykonuje kompleksowo wykończenie wraz z elektryką i hydrauliką?",
         "Ile osób liczy ekipa i ile zleceń prowadzą Państwo obecnie równolegle?",
         "W jakim terminie możecie zacząć i ile potrwa realizacja takiego metrażu?",
-        "Co dokładnie obejmuje wycena, a co jest poza nią (np. materiały, wywóz odpadów)?",
         "Czy mogę zobaczyć zdjęcia ostatnich realizacji o podobnym standardzie?",
-        "Jak wygląda płatność - etapy/transze przy określonym postępie prac?",
-        "Czy podpiszą Państwo umowę na naszym wzorze?"
       ] },
-      { t: "note", variant: "info", title: "Przykładowy fragment rozmowy", html: "<strong>Ty:</strong> Dzień dobry, prowadzę remont mieszkania w stanie deweloperskim, ok. [metraż] m², prosty standard - pełne wykończenie z elektryką i hydrauliką. Materiały i projekt zapewniamy my. Czy to zakres, który Państwo robią?<br><strong>Wykonawca:</strong> Tak, robimy kompleksowo.<br><strong>Ty:</strong> Świetnie. Prowadzą Państwo działalność i wystawiają fakturę VAT?<br><strong>Wykonawca:</strong> Tak.<br><strong>Ty:</strong> To jaki termin startu i ile zajmie taki metraż? I co obejmuje wycena? Poproszę też o kilka zdjęć ostatnich realizacji. Umowę podpisujemy na naszym wzorze." },
+      { t: "note", variant: "info", title: "Przykładowy fragment rozmowy", html: "<strong>Ty:</strong> Cześć, szukam ekipy, która wykona remont mieszkania w stanie deweloperskim, ok. [metraż] m², prosty standard. Zapewniam materiały, projekty są gotowe. Czy macie wolny termin na [miesiąc]?<br><strong>Wykonawca:</strong> Tak, możemy zacząć od drugiego tygodnia.<br><strong>Ty:</strong> Świetnie. Prowadzą Państwo działalność i wystawiają fakturę VAT?<br><strong>Wykonawca:</strong> Tak.<br><strong>Ty:</strong> W jakim czasie jesteście w stanie wykonać remont i w jakiej cenie? Umowę podpisujemy na naszym wzorze." },
 
       { t: "h", text: "Umowa z ekipą" },
       { t: "p", html: "Umowę zawsze zawieramy na <strong>gotowym wzorze, który dostarcza flipper</strong>. Nie tworzysz własnych umów ani nie zlecasz prac „na słowo”." },
