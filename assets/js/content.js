@@ -830,7 +830,7 @@ window.KB_CONTENT = (function () {
 
       { t: "h", text: "Kontakty" },
       { t: "p", html: "Dane kontaktowe i dostępy do dostawców (osoby, telefony, loginy B2B - np. kontakt do opiekuna w Leroy Merlin czy konto B2B Mexen) <strong>uzyskasz od flippera</strong>. Jeśli czegoś brakuje - poproś o kontakt przed złożeniem zamówienia." },
-      { t: "note", variant: "tip", html: "Gdy znajdziesz nowego, dobrego dostawcę (np. lepsza cena lub krótszy termin) - zaproponuj go flipperowi i dopisz do tego katalogu." }
+      { t: "note", variant: "tip", html: "Gdy znajdziesz nowego, dobrego dostawcę (np. lepsza cena lub krótszy termin) - zaproponuj go flipperowi." }
     ]
   };
 
