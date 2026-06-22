@@ -13,5 +13,10 @@ desktop.ini
 .idea/
 *.swp
 
-# Paczki dystrybucyjne (opcjonalnie — to tylko zrzut projektu)
+# Paczki dystrybucyjne (opcjonalnie - to tylko zrzut projektu)
 TRBK-Baza-Wiedzy-projekt.zip
+
+# Artefakty buildu StatiCrypt (docs/ ZOSTAJE - to publikowana, zaszyfrowana wersja)
+secure-src.html
+enc/
+dec/

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TRBK — Baza Wiedzy  ·  silnik aplikacji
+   TRBK - Baza Wiedzy  ·  silnik aplikacji
    - Cała nawigacja i wyszukiwarka budują się z danych (content.js).
    - Routing po adresie URL (#/rola/artykul) → każdy artykuł ma własny link.
    - Brak zależności zewnętrznych. Działa również z pliku (file://).
@@ -334,7 +334,7 @@
       '<section class="home__hero">' +
         '<div class="home__kicker">' + escapeHtml((DATA.brand && DATA.brand.name) || "TRBK") + " · Wewnętrzna baza wiedzy</div>" +
         '<h1 class="home__title">' + escapeHtml((DATA.home && DATA.home.title) || "Wszystko, czego potrzebujesz, by zacząć.") + "</h1>" +
-        '<p class="home__sub">' + escapeHtml((DATA.home && DATA.home.sub) || "Procedury, standardy i odpowiedzi na najczęstsze pytania — w jednym miejscu.") + "</p>" +
+        '<p class="home__sub">' + escapeHtml((DATA.home && DATA.home.sub) || "Procedury, standardy i odpowiedzi na najczęstsze pytania - w jednym miejscu.") + "</p>" +
         '<div class="home__cta"><a class="btn btn--primary" href="' + startHref + '">' + I.book({ size: 17 }) + " Rozpocznij wdrożenie</a>" +
           '<button class="btn btn--ghost" data-search-open>' + I.search({ size: 16 }) + " Szukaj " + '<span class="kbd">⌘K</span></button></div>' +
       "</section>" +
@@ -344,7 +344,7 @@
 
     setCrumbs([]);
     setActiveNav(null);
-    document.title = ((DATA.brand && DATA.brand.name) || "TRBK") + " — Baza Wiedzy";
+    document.title = ((DATA.brand && DATA.brand.name) || "TRBK") + " - Baza Wiedzy";
     setMeta((DATA.home && DATA.home.sub) || "Wewnętrzna baza wiedzy TRBK.");
     $("#view").focus();
     window.scrollTo(0, 0);
@@ -383,7 +383,7 @@
     wireArticleInteractions(role.id, a.id);
     setCrumbs([{ label: role.title, href: "#/" + role.id + "/" + a.id }, { label: a.title }]);
     setActiveNav(role.id + "/" + a.id);
-    document.title = a.title + " · " + role.title + " — " + ((DATA.brand && DATA.brand.name) || "TRBK");
+    document.title = a.title + " · " + role.title + " - " + ((DATA.brand && DATA.brand.name) || "TRBK");
     setMeta(a.summary || stripTags(blocksHTML).slice(0, 150));
     $("#view").focus();
     window.scrollTo(0, 0);
@@ -394,7 +394,7 @@
       '<h1 class="home__title">Nie znaleziono strony</h1><p class="home__sub">Ten artykuł nie istnieje lub został przeniesiony.</p>' +
       '<div class="home__cta"><a class="btn btn--primary" href="#/">' + I.home({ size: 16 }) + " Strona główna</a></div></section></div>";
     setCrumbs([{ label: "Nie znaleziono" }]); setActiveNav(null);
-    document.title = "Nie znaleziono — " + ((DATA.brand && DATA.brand.name) || "TRBK");
+    document.title = "Nie znaleziono - " + ((DATA.brand && DATA.brand.name) || "TRBK");
   }
 
   /* ----- ToC + scroll spy ---------------------------------------------- */
@@ -458,7 +458,7 @@
   }
 
   function wireArticleInteractions(roleId, artId) {
-    // Checklisty — zaznaczenia NIE są zapisywane (bieżąca kontrola w trakcie pracy).
+    // Checklisty - zaznaczenia NIE są zapisywane (bieżąca kontrola w trakcie pracy).
     $all(".checklist").forEach(function (list) {
       var boxes = $all('input[type="checkbox"]', list);
       var prog = $("[data-progress]", list);
@@ -504,7 +504,7 @@
     var printBtn = $("[data-print]");
     if (printBtn) printBtn.addEventListener("click", function () { window.print(); });
 
-    // Nagłówki: przycisk udostępniania — kopiuje link do artykułu + toast.
+    // Nagłówki: przycisk udostępniania - kopiuje link do artykułu + toast.
     $all("[data-anchor]").forEach(function (anchor) {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
@@ -693,7 +693,7 @@
     if (!id) return;
     var el = document.getElementById(id);
     if (!el) return;
-    // renderArticle przewinął na górę — teraz skacz do sekcji (offset: scroll-margin-top).
+    // renderArticle przewinął na górę - teraz skacz do sekcji (offset: scroll-margin-top).
     try { el.scrollIntoView({ block: "start" }); } catch (e) { el.scrollIntoView(); }
   }
   function route() {

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TRBK — Baza Wiedzy
+   TRBK - Baza Wiedzy
    Design system: monochrom / grafit, premium, minimalistyczny
    Motyw jasny + ciemny. Brak zależności sieciowych (działa offline).
    ========================================================================== */
@@ -48,7 +48,7 @@
   --code-bg: #f4f4f5;
   --kbd-bg: #ffffff;
 
-  /* Semantyczne callouty — zdesaturowane, premium */
+  /* Semantyczne callouty - zdesaturowane, premium */
   --info-bg: #f4f5f7;   --info-bd: #d8dbe0; --info-fg: #3f4654; --info-ic: #6b7280;
   --tip-bg: #f0f6f2;    --tip-bd: #cfe6d6;  --tip-fg: #2f5d40;  --tip-ic: #2f8f5b;
   --warn-bg: #fbf6ec;   --warn-bd: #f0e0c0; --warn-fg: #7a5a16; --warn-ic: #c4901f;
@@ -152,7 +152,7 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--sidebar-bg);
   border-right: 1px solid var(--border);
   display: flex; flex-direction: column;
-  /* Stały, niełamliwy układ — pozycja fixed eliminuje migotanie sticky
+  /* Stały, niełamliwy układ - pozycja fixed eliminuje migotanie sticky
      przy przewijaniu (kolumna 1 gridu rezerwuje miejsce). */
   position: fixed; top: 0; left: 0; width: var(--sidebar-w); height: 100vh;
   z-index: 60;
@@ -265,7 +265,7 @@ button { font-family: inherit; cursor: pointer; }
   position: sticky; top: 0; z-index: 40;
   display: flex; align-items: center; gap: 12px;
   padding: 11px 22px;
-  /* Solidne tło zamiast backdrop-filter — eliminuje repaint/migotanie przy scrollu. */
+  /* Solidne tło zamiast backdrop-filter - eliminuje repaint/migotanie przy scrollu. */
   background: var(--bg);
   border-bottom: 1px solid var(--border);
 }

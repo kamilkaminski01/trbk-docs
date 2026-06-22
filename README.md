@@ -11,7 +11,7 @@ UI is Polish; the app/codebase is language‑agnostic.
 
 ## Features
 
-- Hash‑based router — every article has its own URL (`#/<role>/<article>`)
+- Hash‑based router - every article has its own URL (`#/<role>/<article>`)
 - Instant full‑text search (`⌘K` / `Ctrl K`), diacritics‑insensitive
 - Sidebar nav with collapsible role/groups; mobile drawer
 - Light/dark theme (graphite), persisted
@@ -19,7 +19,7 @@ UI is Polish; the app/codebase is language‑agnostic.
   tables, cards, media, files, links
 - Auto table‑of‑contents with scroll‑spy, prev/next, print‑to‑PDF
 - A11y: landmarks, ARIA, keyboard nav, visible focus, reduced‑motion
-- Works offline from `file://` — no server required
+- Works offline from `file://` - no server required
 
 ## Stack
 
@@ -32,7 +32,7 @@ Browser `localStorage` is used for theme and checklist state (optional, guarded)
 index.html              # mount point + <noscript>; loads the two scripts
 assets/
   css/styles.css        # design system + components (light/dark)
-  js/content.js         # CONTENT — the only file you edit day to day
+  js/content.js         # CONTENT - the only file you edit day to day
   js/app.js             # engine: router, block renderer, search, theme
 TRBK-Baza-Wiedzy.html   # optional single‑file build (everything inlined)
 .nojekyll               # disable Jekyll on GitHub Pages
@@ -51,7 +51,7 @@ Optional static server: `python3 -m http.server` then visit `http://localhost:80
 roles[] → groups[] → items[] (articles) → blocks[]
 ```
 
-Add an article — define it and add it to a group's `items`:
+Add an article - define it and add it to a group's `items`:
 
 ```js
 A.myArticle = {
@@ -69,7 +69,7 @@ A.myArticle = {
 { label: "Zasoby i referencje", items: [A.dostawcy, A.narzedzia, A.faq, A.checklisty, A.myArticle] }
 ```
 
-Add a role — push a role object onto `roles`. A role with `soon: true` renders as
+Add a role - push a role object onto `roles`. A role with `soon: true` renders as
 "coming soon"; otherwise give it `groups`. Cross‑link articles with
 `href="#/<role>/<article>"`.
 
@@ -104,10 +104,36 @@ With `gh` CLI: `gh repo create trbk-docs --public --source=. --push`.
 
 > The repo ships **without git history** so the first commit is yours.
 
+## Password protection (StatiCrypt)
+
+The live site can be gated behind a single shared password. The page is AES-256
+encrypted at build time and decrypted in the browser - no backend needed, works on
+GitHub Pages. The encrypted output lives in `docs/` and is the only thing published.
+
+One-time setup: **Settings -> Pages -> Deploy from a branch -> `main` -> `/docs`**.
+The live site then serves `docs/index.html` (encrypted); the plaintext `assets/` in
+the repo root are NOT served by Pages.
+
+Re-encrypt after editing content (requires Node.js):
+
+```bash
+STATICRYPT_PASSWORD="your-strong-password" ./tools/build-secure.sh
+git add -A && git commit -m "Update" && git push
+```
+
+- Use a long password (16+ random chars) - the encrypted file is downloadable, so a
+  weak password can be brute-forced offline. The "Remember me" box keeps users signed
+  in for 30 days per device.
+- This is one shared password (no per-user logins or audit). For per-employee
+  authentication, use Cloudflare Access instead.
+- The repo is public, so the plaintext source stays browsable on GitHub. To hide the
+  source too, make the repo private (public Pages from a private repo may require a
+  paid GitHub plan).
+
 ## Notes
 
 - `index.html` sets `<meta name="robots" content="noindex,nofollow">`. Public repos
-  and Pages are still world‑readable by URL — use a private repo + paid Pages or an
+  and Pages are still world‑readable by URL - use a private repo + paid Pages or an
   access‑gated host if the content must stay private.
 - To regenerate the single‑file build after editing sources, inline `styles.css`,
   `content.js` and `app.js` into `index.html`.
